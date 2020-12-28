@@ -38,25 +38,3 @@ class Button{
     text(this.text,this.x, this.y);
   }
 }
-
-class HitBoxes{
-  constructor(){
-    this.boxes = [];
-  }
-  checkHit(hit_box1, hit_box2){
-  }
-}
-
-class HitBox{
-  constructor(x_ = 0, y_ = 0, width_, height_){
-    this.x = x_;
-    this.y = y_;
-    this.width = width_;
-    this.height = height_;
-  }
-  pointHit(x_, y_){
-    if (x_ > this.x && x_ < this.x + this.width && y_ > this.y && y_ < this.y + this.height)
-      return true;
-    return false;
-  }
-}

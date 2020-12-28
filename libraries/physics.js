@@ -11,6 +11,10 @@ class Physics{
   addBox(parent_, x_, y_, width_, height_){
     this.boxes.push(new HitBox(this.boxes.length, parent_, x_, y_, width_, height_));
   }
+  boxFromId(id_){
+    for (let i = 0; i < this.boxes.length; i++)
+      if (this.boxes[i].id == id_) return i;
+  }
   update(){
     let counter;
     for (counter = this.boxes.length - 1; counter >= 0; counter --){
@@ -34,6 +38,29 @@ class Physics{
         if (this.boxes[counter].colliding.length > 0) stroke(0, 0, 200);
         rect(this.boxes[counter].x, this.boxes[counter].y, this.boxes[counter].width, this.boxes[counter].height);
       }
+    }
+  }
+  updateBox(id_){
+    let i;
+    let counter = this.boxFromId(id_);
+    for (i = this.boxes.length - 1; i >= 0; i --){
+      this.boxes[i].colliding = arrayRemove(this.boxes[i].colliding, this.boxes[counter].id);
+      this.boxes[counter].colliding = arrayRemove(this.boxes[counter].colliding, this.boxes[i].id);
+      if ((this.boxCollide(this.boxes[i], this.boxes[counter]) || this.boxCollide(this.boxes[counter], this.boxes[i]))){
+        if ((this.boxCollide(this.boxes[i], this.boxes[counter]) || this.boxCollide(this.boxes[counter], this.boxes[i]))){
+          if (this.boxes[i].colliding.indexOf(this.boxes[counter].id) == -1)
+            this.boxes[i].colliding.push(this.boxes[counter].id);
+          if (this.boxes[counter].colliding.indexOf(this.boxes[i].id) == -1)
+            this.boxes[counter].colliding.push(this.boxes[i].id);
+        }
+      }
+
+    }
+    if (this.debug){
+      noFill();
+      stroke(200, 0, 0);
+      if (this.boxes[counter].colliding.length > 0) stroke(0, 0, 200);
+      rect(this.boxes[counter].x, this.boxes[counter].y, this.boxes[counter].width, this.boxes[counter].height);
     }
   }
   boxCollide(box1, box2){
