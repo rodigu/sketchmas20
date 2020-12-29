@@ -74,6 +74,12 @@ class GameAssets{
       if (this.sprites[counter].id == id_) return counter;
     return null;
   }
+  getSprite(id_){
+    let counter;
+    for (counter = 0; counter < this.sprites.length; counter++)
+      if (this.sprites[counter].id == id_) return this.sprites[counter];
+    return null;
+  }
   playSound(id_){
     this.sounds[this.getSoundIndex(id_)].file.play();
   }
