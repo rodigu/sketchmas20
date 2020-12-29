@@ -8,8 +8,9 @@ class Entity{
     this.cycle_position = 0;
   }
   update(){
-    if (this.current_cycle_position >= this.animation_cycles[this.current_cycle].length) this.current_cycle_position = 0;
-    else this.current_cycle_position ++;
+    let dur = this.animation_cycles[this.current_cycle][this.cycle_position];
+    if (frameCount%dur[1] == 0) this.cycle_position++;
+    if (this.cycle_position >= this.animation_cycles[this.current_cycle].length) this.cycle_position = 0;
   }
 }
 class Entities{
@@ -33,6 +34,13 @@ class Entities{
   getEntity(id_){
     for (let i = 0; i < this.list.length; i++)
       if (this.list[i].id == id_) return this.list[i];
+  }
+  setEntityCurrentCycle(id_, current_){
+    this.list[this.getEntityIndex(id_)].current_cycle = current_;
+  }
+  getEntitySprite(id_){
+    let ent = this.list[this.getEntityIndex(id_)];
+    return ent.animation_cycles[ent.current_cycle][ent.cycle_position][0];
   }
 }
 
@@ -100,11 +108,11 @@ function playerControl(){
 }
 
 class House{
-  constructor(ysize_){
+  constructor(ysize_, tileset_){
     this.rooms = [];
     for (let i = 0; i < ysize_; i++)
       this.rooms.push([]);
-    this.tileset = [];
+    this.tileset = tileset_;
   }
   addRoom(x_, y_, map_){
     this.rooms[x_][y_] = map_;
@@ -124,6 +132,7 @@ function preload(){
   entities = new Entities();
   houses = [];
   houses.push(new House(5));
+  assets.addSprite('player0', 'assets/g.png');
   houses[0].addRoom(0,0,[
     [1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 0, 0, 0, 0],
@@ -154,15 +163,18 @@ function preload(){
     [0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 1]
   ]);
-  assets.addSprite('player', 'assets/g.png');
-  entities.addEntity('player', 3*TILE, 3*TILE, [['player']]);
+  let player_cycles = [
+    [['player0', 5]]
+  ]
+  entities.addEntity('player', 3*TILE, 3*TILE, player_cycles);
   current_house = 0;
   room_position = [0,0];
 }
 
 function show(){
+  if (mouseIsPressed) console.log(frameRate());
   playerControl();
-  assets.resizeSprite('player', 80);
+  assets.resizeSprite('player0', 80);
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
@@ -174,6 +186,7 @@ function show(){
   }
   for (let i = 0; i < entities.list.length; i++){
     let te = entities.list[i];
-    assets.showSprite(te.id, te.x, te.y);
+    entities.list[i].update();
+    assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
   }
 }
