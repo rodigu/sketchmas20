@@ -1,3 +1,10 @@
+/*
+Takeaways:
+- don`t hold back on returning whole objects from functions
+- if a function to add entities is inside the class Entities,
+  don't name it addEntities, name it add
+*/
+
 var canv;
 var game_state;
 var assets;
@@ -9,10 +16,12 @@ var houses;
 var control;
 var current_house;
 var room_position;
+var items;
 
 function setup(){
   smooth(0);
   TILE = 80;
+  frameRate(50);
   game_state = 0;
   canv = createCanvas(640, 640);
 }
