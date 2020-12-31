@@ -81,42 +81,43 @@ function keyReleased(){
     control[key] = false;
 }
 function playerControl(){
+  let walk = 3;
   let p = entities.getEntity('player');
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   if (control['a'])
-    entities.setEntityX('player', p.x - 6);
+    entities.setEntityX('player', p.x - 10);
   if (control['w'])
-    entities.setEntityY('player', p.y - 6);
+    entities.setEntityY('player', p.y - 10);
   if (control['d'])
-    entities.setEntityX('player', p.x + 6);
+    entities.setEntityX('player', p.x + 10);
   if (control['s'])
-    entities.setEntityY('player', p.y + 6);
-  if (p.x > 0 && p.x < width - TILE && p.y > 0 && p.y < height - TILE){
-    if (th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE/10)/TILE)] > 0){
-      if (control['w'])
-        entities.setEntityY('player', p.y+6);
-      if (control['a'])
-        entities.setEntityX('player', p.x+6);
-    }
-    if (th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE - TILE/10)/TILE)] > 0){
-      if (control['w'])
-        entities.setEntityY('player', p.y+6);
-      if (control['d'])
-        entities.setEntityX('player', p.x-6);
-    }
-    if (th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/10)/TILE)] > 0){
-      if (control['s'])
-        entities.setEntityY('player', p.y-6);
-      if (control['a'])
-        entities.setEntityX('player', p.x+6);
-    }
-    if (th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/10)/TILE)] > 0){
-      if (control['s'])
-        entities.setEntityY('player', p.y-6);
-      if (control['d'])
-        entities.setEntityX('player', p.x-6);
-    }
+    entities.setEntityY('player', p.y + 10);
+
+  if (p.x > 0 && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE/10)/TILE)] > walk){
+    if (control['w'])
+      entities.setEntityY('player', p.y+10);
+    if (control['a'])
+      entities.setEntityX('player', p.x+10);
   }
+  if (p.x < width - TILE && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE - TILE/10)/TILE)] > walk){
+    if (control['w'])
+      entities.setEntityY('player', p.y+10);
+    if (control['d'])
+      entities.setEntityX('player', p.x-10);
+  }
+  if (p.x > 0 && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/10)/TILE)] > walk){
+    if (control['s'])
+      entities.setEntityY('player', p.y-10);
+    if (control['a'])
+      entities.setEntityX('player', p.x+10);
+  }
+  if (p.x < width - TILE && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/10)/TILE)] > walk){
+    if (control['s'])
+      entities.setEntityY('player', p.y-10);
+    if (control['d'])
+      entities.setEntityX('player', p.x-10);
+  }
+
   if ((p.x + TILE/2) > (width)){
     entities.setEntityX('player', 1-TILE/2);
     room_position[0]++;
@@ -147,84 +148,18 @@ class House{
   }
 }
 
-function preload(){
-  control = {
-    'a': false,
-    'w': false,
-    's': false,
-    'd': false
-  }
-  items = new Items();
-  assets = new GameAssets();
-  physics = new Physics();
-  entities = new Entities();
-  items.addItem('key', 1, 1, [[['player0', 5]]], 0, [1,0]);
-  houses = [];
-  houses.push(new House(5));
-  assets.addSprite('player0', 'assets/g.png');
-  houses[0].addRoom(0,0,[
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [4, 0, 0, 0, 0, 0, 0, 2],
-    [4, 0, 0, 0, 0, 0, 0, 2],
-    [4, 0, 0, 0, 0, 0, 0, 2],
-    [0, 1, 1, 0, 0, 0, 0, 2],
-    [0, 0, 0, 4, 0, 0, 0, 2],
-    [0, 0, 0, 4, 0, 0, 0, 2],
-    [0, 0, 0, 0, 3, 3, 3, 0]
-  ]);
-  houses[0].addRoom(1,0,[
-    [1, 1, 1, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 2, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 1, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 0, 1, 1, 1]
-  ]);
-  houses[0].addRoom(0,1,[
-    [1, 1, 1, 0, 1, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 0, 2, 2, 1, 2, 1, 0],
-    [0, 0, 0, 0, 1, 0, 1, 0],
-    [0, 0, 0, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 0, 1, 1, 1]
-  ]);
-  houses[0].addRoom(1,1,
-  [
-  [1,1,1,1,0,1,1,1],
-  [1,0,0,0,0,0,0,1],
-  [1,0,0,0,0,3,0,1],
-  [1,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,4,1],
-  [1,0,3,0,0,2,0,1],
-  [1,0,0,4,0,0,0,1],
-  [1,1,1,1,1,1,1,1]
-  ]
-  );
-  let player_cycles = [
-    [['player0', 5]]
-  ]
-  entities.addEntity('player', 3*TILE, 3*TILE, player_cycles);
-  current_house = 0;
-  room_position = [1,1];
-}
-
 function show(){
   if (mouseIsPressed) console.log(int(frameRate()));
   playerControl();
-  assets.resizeSprite('player0', 80);
+  if (frameCount < 50)
+    for (let a = 0; a < assets.sprites.length; a++) assets.sprites[a].resizeNN(TILE);
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
-      if (th[i][j] == 0) fill(30);
-      else if (th[i][j] == 1) fill(200);
-      else if (th[i][j] == 2) fill(150, 50, 50);
-      else if (th[i][j] == 3) fill(0, 200, 0);
-      else if (th[i][j] == 4) fill(0, 0, 200);
+      fill(0, 0, 0);
       rect(j*TILE, i*TILE, TILE, TILE);
+      if (th[i][j] != 0)
+        assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);
     }
   }
   items.show();
