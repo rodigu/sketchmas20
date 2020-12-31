@@ -12,7 +12,7 @@ function loadSprites(){
   //
   //   8      7
   //   14  5  15
-  assets.addSprite('tile_ground0', 'assets/white_wall_house_brick.png');
+  assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('wall4', 'assets/wall_house_1_cornerpiece.png');
   assets.addSprite('wall5', 'assets/wall_house0_vertical.png');
   assets.addSprite('wall6', 'assets/wall_house0_topright_cornerpiece.png');

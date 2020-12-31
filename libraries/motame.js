@@ -93,25 +93,25 @@ function playerControl(){
   if (control['s'])
     entities.setEntityY('player', p.y + 10);
 
-  if (p.x > 0 && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE/10)/TILE)] > walk){
+  if (p.x > 0 && p.y > 0 && th[int((p.y + TILE/5)/TILE)]       [int((p.x + TILE/5)/TILE)] > walk){
     if (control['w'])
       entities.setEntityY('player', p.y+10);
     if (control['a'])
       entities.setEntityX('player', p.x+10);
   }
-  if (p.x < width - TILE && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE - TILE/10)/TILE)] > walk){
+  if (p.x < width - TILE && p.y > 0 && th[int((p.y + TILE/5)/TILE)]       [int((p.x + TILE - TILE/5)/TILE)] > walk){
     if (control['w'])
       entities.setEntityY('player', p.y+10);
     if (control['d'])
       entities.setEntityX('player', p.x-10);
   }
-  if (p.x > 0 && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/10)/TILE)] > walk){
+  if (p.x > 0 && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/5)/TILE)] > walk){
     if (control['s'])
       entities.setEntityY('player', p.y-10);
     if (control['a'])
       entities.setEntityX('player', p.x+10);
   }
-  if (p.x < width - TILE && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/10)/TILE)] > walk){
+  if (p.x < width - TILE && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/5)/TILE)] > walk){
     if (control['s'])
       entities.setEntityY('player', p.y-10);
     if (control['d'])
