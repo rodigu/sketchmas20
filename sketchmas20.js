@@ -22,6 +22,7 @@ function setup(){
   smooth(0);
   TILE = 80;
   frameRate(30);
+  noStroke();
   game_state = 0;
   canv = createCanvas(640, 640);
 }
