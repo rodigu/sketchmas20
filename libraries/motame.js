@@ -93,25 +93,25 @@ function playerControl(){
   if (control['s'])
     entities.setEntityY('player', p.y + 10);
 
-  if (p.x > 0 && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE/10)/TILE)] > walk){
+  if (p.x > 0 && p.y > 0 && th[int((p.y + TILE/5)/TILE)]       [int((p.x + TILE/5)/TILE)] > walk){
     if (control['w'])
       entities.setEntityY('player', p.y+10);
     if (control['a'])
       entities.setEntityX('player', p.x+10);
   }
-  if (p.x < width - TILE && p.y > 0 && th[int((p.y + TILE/10)/TILE)]       [int((p.x + TILE - TILE/10)/TILE)] > walk){
+  if (p.x < width - TILE && p.y > 0 && th[int((p.y + TILE/5)/TILE)]       [int((p.x + TILE - TILE/3)/TILE)] > walk){
     if (control['w'])
       entities.setEntityY('player', p.y+10);
     if (control['d'])
       entities.setEntityX('player', p.x-10);
   }
-  if (p.x > 0 && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/10)/TILE)] > walk){
+  if (p.x > 0 && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE/5)/TILE)] > walk){
     if (control['s'])
       entities.setEntityY('player', p.y-10);
     if (control['a'])
       entities.setEntityX('player', p.x+10);
   }
-  if (p.x < width - TILE && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/10)/TILE)] > walk){
+  if (p.x < width - TILE && p.y < height - TILE && th[int((p.y + TILE - TILE/10)/TILE)][int((p.x + TILE - TILE/3)/TILE)] > walk){
     if (control['s'])
       entities.setEntityY('player', p.y-10);
     if (control['d'])
@@ -156,7 +156,7 @@ function show(){
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
-      fill(0, 0, 0);
+      fill(189, 114, 64);
       rect(j*TILE, i*TILE, TILE, TILE);
       if (th[i][j] != 0)
         assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);

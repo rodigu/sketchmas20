@@ -12,7 +12,8 @@ function loadSprites(){
   //
   //   8      7
   //   14  5  15
-  assets.addSprite('tile_ground0', 'assets/white_wall_house_brick.png');
+  //
+  assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('wall4', 'assets/wall_house_1_cornerpiece.png');
   assets.addSprite('wall5', 'assets/wall_house0_vertical.png');
   assets.addSprite('wall6', 'assets/wall_house0_topright_cornerpiece.png');
@@ -27,6 +28,7 @@ function loadSprites(){
   assets.addSprite('wall15', 'assets/wall_house0_topleft_innercornerpiece.png');
   assets.addSprite('player0', 'assets/scrooge_full_body_walk.png');
   assets.addSprite('player1', 'assets/scrooge_full_body_updated.png');
+  assets.addSprite('tile_ground1', 'assets/g.png');
 }
 function loadHouses(){
   current_house = 0;
@@ -59,6 +61,16 @@ function loadHouses(){
   [0, 0, 7, 1, 1, 1, 1, 8],
   [5, 5, 15, 1, 1, 1, 1, 8],
   [1, 1, 1, 1, 1, 1, 1, 8]
+  ]);
+  houses[0].addRoom(0,2, [
+  [1, 1, 1, 1, 1, 0, 1, 10],
+  [1, 1, 1, 1, 1, 1, 1, 10],
+  [1, 1, 1, 1, 1, 1, 1, 10],
+  [1, 1, 4, 5, 6, 1, 1, 10],
+  [1, 1, 7, 0, 8, 1, 1, 10],
+  [1, 1, 9, 10, 11, 1, 1, 10],
+  [1, 1, 1, 1, 1, 1, 1, 10],
+  [10, 10, 10, 10, 10, 10, 10, 11]
   ]);
 }
 function loadEntities(){
