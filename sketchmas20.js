@@ -17,6 +17,7 @@ var control;
 var current_house;
 var room_position;
 var items;
+var letter;
 
 function setup(){
   smooth(0);
