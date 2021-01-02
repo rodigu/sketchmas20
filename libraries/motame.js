@@ -82,6 +82,19 @@ class Items{
     }
   }
 }
+class Letter{
+  constructor(sprite_, x_, y_){
+    this.sprite = sprite_;
+    this.x = x_;
+    this.y = y_;
+  }
+  update(){
+    assets.showSprite(this.sprite, this.x, this.y);
+    if (mouseX > this.x && mouseY > this.y)
+      this.sprite = 'letter2';
+    else this.sprite = 'letter';
+  }
+}
 
 function keyPressed(){
   if(frameCount > 2)
@@ -186,4 +199,5 @@ function show(){
     entities.list[i].update();
     assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
   }
+  letter.update();
 }

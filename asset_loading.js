@@ -41,6 +41,10 @@ function loadSprites(){
   assets.addSprite('ox', 'assets/ox_full_body.png');
   assets.addSprite('rat', 'assets/rat_full_body.png');
 
+  // Misc
+  assets.addSprite('letter', 'assets/letter_plain.png');
+  assets.addSprite('letter2', 'assets/letter_2.png');
+
 }
 function loadHouses(){
   current_house = 0;
@@ -76,7 +80,7 @@ function loadHouses(){
   [1, 1, 1, 1, 1, 1, 1, 8]
   ]);
   houses[0].addRoom(0,2, [
-  [1, 1, 1, 1, 1, 0, 1, 10],
+  [1, 1, 1, 1, 1, 1, 1, 10],
   [1, 1, 1, 1, 1, 1, 1, 10],
   [1, 1, 1, 1, 1, 1, 1, 10],
   [1, 1, 4, 5, 6, 1, 1, 10],
@@ -89,6 +93,7 @@ function loadHouses(){
 function loadEntities(){
   items = new Items();
   entities = new Entities();
+  letter = new Letter('letter', 7*TILE, 7*TILE);
   items.addItem('key', 1, 1, [[['player0', 5]]], 0, [1,0]);
   let player_cycles = [
     [['player1', 1]], [['player0', 5], ['player1', 5]]
