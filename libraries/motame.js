@@ -178,8 +178,13 @@ function show(){
   else
     entities.setEntityCycle('player', 0);
   playerControl();
-  if (frameCount < 50)
-    for (let a = 0; a < assets.sprites.length; a++) assets.sprites[a].resizeNN(TILE);
+  if (frameCount < 20)
+    for (var i = 0; i < assets.sprites.length; i++){
+      if (assets.sprites[i].id != 'rat')
+        assets.sprites[i].resizeNN(TILE, 0);
+      else
+        assets.sprites[i].resizeNN(50, 0);
+    }
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
