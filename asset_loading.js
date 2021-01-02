@@ -91,7 +91,7 @@ function loadEntities(){
   entities = new Entities();
   items.addItem('key', 1, 1, [[['player0', 5]]], 0, [1,0]);
   let player_cycles = [
-    [['player1', 1]], [['player0', 10], ['player1', 10]]
+    [['player1', 1]], [['player0', 5], ['player1', 5]]
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
   let ent_cycles = [

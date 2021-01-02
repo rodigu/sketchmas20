@@ -6,10 +6,15 @@ class Entity{
     this.animation_cycles = cycles_;
     this.current_cycle = 0;
     this.cycle_position = 0;
+    this.count = 0;
   }
   update(){
+    this.count++;
     let dur = this.animation_cycles[this.current_cycle][this.cycle_position];
-    if (frameCount%dur[1] == 0) this.cycle_position++;
+    if (this.count >= dur[1]){
+      this.cycle_position++;
+      this.count = 0;
+    }
     if (this.cycle_position >= this.animation_cycles[this.current_cycle].length) this.cycle_position = 0;
   }
 }
@@ -36,8 +41,10 @@ class Entities{
       if (this.list[i].id == id_) return this.list[i];
   }
   setEntityCycle(id_, c_){
+    if (this.list[this.getEntityIndex(id_)].current_cycle == c_) return;
     this.list[this.getEntityIndex(id_)].cycle_position = 0;
     this.list[this.getEntityIndex(id_)].current_cycle = c_;
+    this.list[this.getEntityIndex(id_)].count = 0;
   }
   setEntityCurrentCycle(id_, current_){
     this.list[this.getEntityIndex(id_)].current_cycle = current_;
@@ -77,12 +84,10 @@ class Items{
 }
 
 function keyPressed(){
-  entities.setEntityCycle('player', 1);
   if(frameCount > 2)
     control[key] = true;
 }
 function keyReleased(){
-  entities.setEntityCycle('player', 0);
   if(frameCount > 2)
     control[key] = false;
 }
@@ -155,6 +160,10 @@ class House{
 }
 
 function show(){
+  if (keyIsPressed)
+    entities.setEntityCycle('player', 1);
+  else
+    entities.setEntityCycle('player', 0);
   playerControl();
   if (frameCount < 50)
     for (let a = 0; a < assets.sprites.length; a++) assets.sprites[a].resizeNN(TILE);
