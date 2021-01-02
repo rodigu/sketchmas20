@@ -157,9 +157,13 @@ function show(){
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
       fill(189, 114, 64);
+      if (th[i][j] == 0)
       rect(j*TILE, i*TILE, TILE, TILE);
-      if (th[i][j] != 0)
+      else{
+        if (th[i][j] > 14)
+          assets.showSprite(houses[current_house].tileset[1], j*TILE, i*TILE)
         assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);
+      }
     }
   }
   items.show();
