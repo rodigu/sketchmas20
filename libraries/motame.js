@@ -35,6 +35,10 @@ class Entities{
     for (let i = 0; i < this.list.length; i++)
       if (this.list[i].id == id_) return this.list[i];
   }
+  setEntityCycle(id_, c_){
+    this.list[this.getEntityIndex(id_)].cycle_position = 0;
+    this.list[this.getEntityIndex(id_)].current_cycle = c_;
+  }
   setEntityCurrentCycle(id_, current_){
     this.list[this.getEntityIndex(id_)].current_cycle = current_;
   }
@@ -73,10 +77,12 @@ class Items{
 }
 
 function keyPressed(){
+  entities.setEntityCycle('player', 1);
   if(frameCount > 2)
     control[key] = true;
 }
 function keyReleased(){
+  entities.setEntityCycle('player', 0);
   if(frameCount > 2)
     control[key] = false;
 }
@@ -149,7 +155,6 @@ class House{
 }
 
 function show(){
-  if (mouseIsPressed) console.log(~~(frameRate()));
   playerControl();
   if (frameCount < 50)
     for (let a = 0; a < assets.sprites.length; a++) assets.sprites[a].resizeNN(TILE);
