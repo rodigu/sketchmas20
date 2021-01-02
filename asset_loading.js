@@ -38,7 +38,7 @@ function loadSprites(){
   assets.addSprite('player1', 'assets/scrooge_full_body_updated.png');
 
   // NPC tileset
-  assets.addSprite('cow', 'assets/cow_full_body.png');
+  assets.addSprite('ox', 'assets/ox_full_body.png');
   assets.addSprite('rat', 'assets/rat_full_body.png');
 
 }
@@ -57,8 +57,8 @@ function loadHouses(){
   houses.push(new House(5, tileset));
   houses[0].addRoom(0,0,[
   [4, 5, 5, 5, 5, 5, 5, 6],
-  [7, 17, 1, 1, 1, 1, 18, 8],
-  [7, 16, 17, 1, 1, 1, 18, 8],
+  [7, 1, 1, 1, 1, 1, 18, 8],
+  [7, 16, 1, 1, 1, 1, 18, 8],
   [9, 12, 1, 1, 1, 1, 13, 11],
   [4, 15, 1, 1, 1, 1, 14, 6],
   [7, 17, 17, 1, 1, 1, 18, 8],
@@ -94,6 +94,15 @@ function loadEntities(){
     [['player0', 5], ['player1', 5]]
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
+  let ent_cycles = [
+    [['ox', 1]]
+  ];
+  entities.addEntity('ox', TILE, TILE, ent_cycles);
+  ent_cycles = [
+    [['rat', 1]]
+  ];
+  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles);
+
 }
 
 function preload(){
