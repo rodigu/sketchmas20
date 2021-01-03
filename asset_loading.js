@@ -99,7 +99,7 @@ function loadEntities(){
   letters = new Letters();
   letters.addLetter('l1', 3, 4, 0, 0, 'asd', 'letter' + str(~~random(2)));
   let player_cycles = [
-    [['player_face_left_0', 20], ['player_face_left_1', 25]], [['player_walk_left_0', 5], ['player_walk_left_1', 5]]
+    [['player_face_left_0', 20], ['player_face_left_1', 25]], [['player_face_left_1', 5], ['player_walk_left_0', 5], ['player_face_left_1', 5], ['player_walk_left_1', 5]]
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
 
