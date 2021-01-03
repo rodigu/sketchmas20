@@ -10,18 +10,17 @@ var game_state;
 var assets;
 var physics;
 var entities;
-var TILE;
+const TILE = 80;
 var player;
 var houses;
 var control;
 var current_house;
 var room_position;
 var items;
-var letter;
+var letters;
 
 function setup(){
   smooth(0);
-  TILE = 80;
   frameRate(30);
   noStroke();
   game_state = 0;
