@@ -35,10 +35,21 @@ function loadSprites(){
   assets.addSprite('wall15', 'assets/wall_house0_topleft_innercornerpiece.png');
 
   // Player Tiles
+  assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
+  assets.addSprite('player_walk_front_0', 'assets/scrooge_face_front_0.png');
+  assets.addSprite('player_walk_front_1', 'assets/scrooge_face_front_1.png');
+  assets.addSprite('player_walk_front_2', 'assets/scrooge_face_front_2.png');
+  assets.addSprite('player_walk_front_3', 'assets/scrooge_face_front_3.png');
+  assets.addSprite('player_walk_front_4', 'assets/scrooge_face_front_4.png');
+
   assets.addSprite('player_face_left_0', 'assets/scrooge_full_body_0.png');
   assets.addSprite('player_face_left_1', 'assets/scrooge_full_body_1.png');
   assets.addSprite('player_walk_left_0', 'assets/scrooge_full_body_walk.png');
   assets.addSprite('player_walk_left_1', 'assets/scrooge_full_body_walk1.png');
+  assets.addSprite('player_walk_left_2', 'assets/scrooge_full_body_walk2.png');
+  assets.addSprite('player_walk_left_3', 'assets/scrooge_full_body_walk3.png');
+  assets.addSprite('player_walk_left_4', 'assets/scrooge_full_body_walk4.png');
+  assets.addSprite('player_walk_left_5', 'assets/scrooge_full_body_walk5.png');
 
   // NPC tileset
   assets.addSprite('ox', 'assets/ox_full_body.png');
@@ -107,7 +118,28 @@ function loadEntities(){
   entities = new Entities();
   loadLetters();
   let player_cycles = [
-    [['player_face_left_0', 20], ['player_face_left_1', 25]], [['player_face_left_1', 5], ['player_walk_left_0', 5], ['player_face_left_1', 5], ['player_walk_left_1', 5]]
+    [
+      ['player_face_front', 1]
+    ],
+    [
+      ['player_walk_front_0', 5],
+      ['player_walk_front_1', 5],
+      ['player_walk_front_2', 5],
+      ['player_walk_front_3', 5],
+      ['player_walk_front_4', 5],
+    ],
+    [
+      ['player_face_left_0', 25],
+      ['player_face_left_1', 23],
+    ],
+    [
+      ['player_walk_left_0', 3],
+      ['player_walk_left_1', 3],
+      ['player_walk_left_2', 3],
+      ['player_walk_left_3', 3],
+      ['player_walk_left_4', 3],
+      ['player_walk_left_5', 3],
+    ],
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
 
