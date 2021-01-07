@@ -145,19 +145,29 @@ function keyPressed(){
 function keyReleased(){
   if(frameCount > 2)
     control[key] = false;
+  if(entities.getEntity('player').current_cycle === 1)
+   entities.setEntityCycle('player', 0);
+ if(entities.getEntity('player').current_cycle === 3)
+  entities.setEntityCycle('player', 2);
 }
 function playerControl(){
   let walk = 3;
   let p = entities.getEntity('player');
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
-  if (control['a'])
+  if (control['a']){
     entities.setEntityX('player', p.x - 10);
-  if (control['w'])
+    entities.setEntityCycle('player', 3);
+  }
+  if (control['w']){
     entities.setEntityY('player', p.y - 10);
-  if (control['d'])
+  }
+  if (control['d']){
     entities.setEntityX('player', p.x + 10);
-  if (control['s'])
+  }
+  if (control['s']){
     entities.setEntityY('player', p.y + 10);
+    entities.setEntityCycle('player', 1);
+  }
 
   if (p.x > 0 && p.y > 0 && th[~~((p.y + TILE/5)/TILE)]       [~~((p.x + TILE/5)/TILE)] > walk){
     if (control['w'])
@@ -215,10 +225,6 @@ class House{
 }
 
 function show(){
-  if (keyIsPressed)
-    entities.setEntityCycle('player', 1);
-  else
-    entities.setEntityCycle('player', 0);
   playerControl();
   if (frameCount < 20)
     for (var i = 0; i < assets.sprites.length; i++){
