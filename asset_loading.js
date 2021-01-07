@@ -16,7 +16,8 @@ function loadSprites(){
 
   // House 0 tiles
   assets.addSprite('chair', 'assets/chair.png');
-  assets.addSprite('wardrobe', 'assets/wardrobe.png');
+  assets.addSprite('wardrobe0', 'assets/wardrobe_front_0.png');
+  assets.addSprite('wardrobe1', 'assets/wardrobe_front_1.png');
   assets.addSprite('table', 'assets/table.png');
   assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('tile_ground1', 'assets/g.png');
@@ -34,16 +35,18 @@ function loadSprites(){
   assets.addSprite('wall15', 'assets/wall_house0_topleft_innercornerpiece.png');
 
   // Player Tiles
-  assets.addSprite('player0', 'assets/scrooge_full_body_walk.png');
-  assets.addSprite('player1', 'assets/scrooge_full_body_updated.png');
+  assets.addSprite('player_face_left_0', 'assets/scrooge_full_body_0.png');
+  assets.addSprite('player_face_left_1', 'assets/scrooge_full_body_1.png');
+  assets.addSprite('player_walk_left_0', 'assets/scrooge_full_body_walk.png');
+  assets.addSprite('player_walk_left_1', 'assets/scrooge_full_body_walk1.png');
 
   // NPC tileset
   assets.addSprite('ox', 'assets/ox_full_body.png');
   assets.addSprite('rat', 'assets/rat_full_body.png');
 
   // Misc
-  assets.addSprite('letter', 'assets/letter_plain.png');
-  assets.addSprite('letter2', 'assets/letter_2.png');
+  assets.addSprite('letter0', 'assets/letter_plain.png');
+  assets.addSprite('letter1', 'assets/letter_2.png');
 
 }
 function loadHouses(){
@@ -56,7 +59,7 @@ function loadHouses(){
     'wall7',            'wall8',
     'wall9',  'wall10', 'wall11',
     'wall12', 'wall13', 'wall14', 'wall15',
-    'table', 'chair', 'wardrobe'
+    'table', 'chair', 'wardrobe0'
   ];
   houses.push(new House(5, tileset));
   houses[0].addRoom(0,0,[
@@ -90,23 +93,32 @@ function loadHouses(){
   [10, 10, 10, 10, 10, 10, 10, 11]
   ]);
 }
+function loadLetters(){
+  letters = new Letters();
+  letters.addLetter('l1', 3, 4, 0, 0,
+    "Dear Mister Scrooge-moo,\n" +
+    "    I seem to have forgoten her ____ with\n" +
+    "Mr. Mouse"
+    , 'letter' + str(~~random(2))
+  );
+}
 function loadEntities(){
   items = new Items();
   entities = new Entities();
-  letter = new Letter('letter', 7*TILE, 7*TILE);
-  items.addItem('key', 1, 1, [[['player0', 5]]], 0, [1,0]);
+  loadLetters();
   let player_cycles = [
-    [['player1', 1]], [['player0', 5], ['player1', 5]]
+    [['player_face_left_0', 20], ['player_face_left_1', 25]], [['player_face_left_1', 5], ['player_walk_left_0', 5], ['player_face_left_1', 5], ['player_walk_left_1', 5]]
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
+
   let ent_cycles = [
     [['ox', 1]]
   ];
-  entities.addEntity('ox', TILE, TILE, ent_cycles);
+  entities.addEntity('ox', TILE, TILE, ent_cycles, 0, 1);
   ent_cycles = [
     [['rat', 1]]
   ];
-  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles);
+  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles, 0, 2);
 }
 
 function preload(){

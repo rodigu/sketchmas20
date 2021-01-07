@@ -1,5 +1,5 @@
 class Entity{
-  constructor(id_, x_, y_, cycles_){
+  constructor(id_, x_, y_, cycles_, roomx_, roomy_){
     this.x = x_;
     this.y = y_;
     this.id = id_;
@@ -7,6 +7,8 @@ class Entity{
     this.current_cycle = 0;
     this.cycle_position = 0;
     this.count = 0;
+    this.room_x = roomx_;
+    this.room_y = roomy_;
   }
   update(){
     this.count++;
@@ -22,8 +24,8 @@ class Entities{
   constructor(){
     this.list = [];
   }
-  addEntity(id_, x_, y_, cycles_){
-    this.list.push(new Entity(id_, x_, y_, cycles_));
+  addEntity(id_, x_, y_, cycles_, rx_, ry_){
+    this.list.push(new Entity(id_, x_, y_, cycles_, rx_, ry_));
     return this.list[this.list.length - 1];
   }
   getEntityIndex(id_){
@@ -52,6 +54,15 @@ class Entities{
   getEntitySprite(id_){
     let ent = this.list[this.getEntityIndex(id_)];
     return ent.animation_cycles[ent.current_cycle][ent.cycle_position][0];
+  }
+  show(){
+    for (let i = this.list.length - 1; i >= 0; i--){
+      let te = this.list[i];
+      this.list[i].update();
+      if (this.list[i].id != "player" && this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1])
+        assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
+      else if (this.list[i].id == "player") assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
+    }
   }
 }
 
@@ -83,16 +94,47 @@ class Items{
   }
 }
 class Letter{
-  constructor(sprite_, x_, y_){
-    this.sprite = sprite_;
+  constructor(id_, x_, y_, rx_, ry_, c_, sprt_){
+    this.id = id_;
     this.x = x_;
     this.y = y_;
+    this.room_x = rx_;
+    this.room_y = ry_;
+    this.contents = c_;
+    this.isShowing = false;
+    this.sprite = sprt_;
+  }
+}
+class Letters{
+  constructor(){
+    this.list = [];
   }
   update(){
-    assets.showSprite(this.sprite, this.x, this.y);
-    if (mouseX > this.x && mouseY > this.y)
-      this.sprite = 'letter2';
-    else this.sprite = 'letter';
+    for (let i = 0; i < this.list.length; i++){
+      if (this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1]){
+        assets.showSprite(this.list[i].sprite, this.list[i].x*TILE, this.list[i].y*TILE);
+        if (this.list[i].isShowing){
+          fill(200);
+          rect(20, 20, width - 40, height - 40);
+          fill(0);
+          text(this.list[i].contents, 60, 80);
+        }
+      }
+      if (mouseIsPressed && this.list[i].isShowing)
+        this.list[i].isShowing = false;
+      if (mouseIsPressed && mouseX < this.list[i].x*TILE + TILE && mouseY < this.list[i].y*TILE + TILE && mouseY > this.list[i].y*TILE && mouseX > this.list[i].x*TILE)
+        this.list[i].isShowing = true;
+    }
+  }
+  getLetterIndex(id_){
+    for (let i = 0; i < this.list.length; i++)
+      if (this.list[i].id == id_) return i;
+  }
+  addLetter(id_, x_, y_, rx_, ry_, c_, sprt_){
+    this.list.push(new Letter(id_, x_, y_, rx_, ry_, c_, sprt_));
+  }
+  addContentsToLetter(id_, c_){
+     this.list[this.getLetterIndex(id_)].contents = c_;
   }
 }
 
@@ -199,10 +241,6 @@ function show(){
     }
   }
   items.show();
-  for (let i = entities.list.length - 1; i >= 0; i--){
-    let te = entities.list[i];
-    entities.list[i].update();
-    assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
-  }
-  letter.update();
+  entities.show();
+  letters.update();
 }
