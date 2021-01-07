@@ -93,11 +93,19 @@ function loadHouses(){
   [10, 10, 10, 10, 10, 10, 10, 11]
   ]);
 }
+function loadLetters(){
+  letters = new Letters();
+  letters.addLetter('l1', 3, 4, 0, 0,
+    "Dear Mister Scrooge-moo,\n" +
+    "    I seem to have forgoten her ____ with\n" +
+    "Mr. Mouse"
+    , 'letter' + str(~~random(2))
+  );
+}
 function loadEntities(){
   items = new Items();
   entities = new Entities();
-  letters = new Letters();
-  letters.addLetter('l1', 3, 4, 0, 0, 'asd', 'letter' + str(~~random(2)));
+  loadLetters();
   let player_cycles = [
     [['player_face_left_0', 20], ['player_face_left_1', 25]], [['player_face_left_1', 5], ['player_walk_left_0', 5], ['player_face_left_1', 5], ['player_walk_left_1', 5]]
   ];

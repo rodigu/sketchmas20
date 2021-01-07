@@ -113,7 +113,17 @@ class Letters{
     for (let i = 0; i < this.list.length; i++){
       if (this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1]){
         assets.showSprite(this.list[i].sprite, this.list[i].x*TILE, this.list[i].y*TILE);
+        if (this.list[i].isShowing){
+          fill(200);
+          rect(20, 20, width - 40, height - 40);
+          fill(0);
+          text(this.list[i].contents, 60, 80);
+        }
       }
+      if (mouseIsPressed && this.list[i].isShowing)
+        this.list[i].isShowing = false;
+      if (mouseIsPressed && mouseX < this.list[i].x*TILE + TILE && mouseY < this.list[i].y*TILE + TILE && mouseY > this.list[i].y*TILE && mouseX > this.list[i].x*TILE)
+        this.list[i].isShowing = true;
     }
   }
   getLetterIndex(id_){
@@ -230,7 +240,7 @@ function show(){
       }
     }
   }
-  letters.update();
   items.show();
   entities.show();
+  letters.update();
 }

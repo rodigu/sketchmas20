@@ -25,6 +25,9 @@ function setup(){
   noStroke();
   game_state = 0;
   canv = createCanvas(640, 640);
+  textFont(loadFont('assets/game_over.ttf'));
+  textSize(70);
+  textLeading(40);
 }
 
 function draw(){
