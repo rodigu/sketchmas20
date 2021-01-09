@@ -149,6 +149,8 @@ function keyReleased(){
    entities.setEntityCycle('player', 0);
  if(entities.getEntity('player').current_cycle === 3)
   entities.setEntityCycle('player', 2);
+  if(entities.getEntity('player').current_cycle === 5)
+   entities.setEntityCycle('player', 4);
 }
 function playerControl(){
   let walk = 3;
@@ -163,6 +165,7 @@ function playerControl(){
   }
   if (control['d']){
     entities.setEntityX('player', p.x + 10);
+    entities.setEntityCycle('player', 5);
   }
   if (control['s']){
     entities.setEntityY('player', p.y + 10);
