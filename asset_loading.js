@@ -15,10 +15,10 @@ function loadSprites(){
   //
 
   // House 0 tiles
-  assets.addSprite('chair', 'assets/chair.png');
+  assets.addSprite('chair', 'assets/chair0.png');
   assets.addSprite('wardrobe0', 'assets/wardrobe_front_0.png');
   assets.addSprite('wardrobe1', 'assets/wardrobe_front_1.png');
-  assets.addSprite('table', 'assets/table.png');
+  assets.addSprite('table', 'assets/table1.png');
   assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('tile_ground1', 'assets/g.png');
   assets.addSprite('wall4', 'assets/wall_house_1_cornerpiece.png');

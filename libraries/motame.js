@@ -156,12 +156,13 @@ function playerControl(){
   let walk = 3;
   let p = entities.getEntity('player');
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
+  if (control['w']){
+    entities.setEntityY('player', p.y - 10);
+    entities.setEntityCycle('player', 5);
+  }
   if (control['a']){
     entities.setEntityX('player', p.x - 10);
     entities.setEntityCycle('player', 3);
-  }
-  if (control['w']){
-    entities.setEntityY('player', p.y - 10);
   }
   if (control['d']){
     entities.setEntityX('player', p.x + 10);
