@@ -51,6 +51,14 @@ function loadSprites(){
   assets.addSprite('player_walk_left_4', 'assets/scrooge_full_body_walk4.png');
   assets.addSprite('player_walk_left_5', 'assets/scrooge_full_body_walk5.png');
 
+  assets.addSprite('player_face_right', 'assets/scrooge_full_body_faceright.png');
+  assets.addSprite('player_walk_right_0', 'assets/scrooge_full_body_walk_right0.png');
+  assets.addSprite('player_walk_right_1', 'assets/scrooge_full_body_walk_right1.png');
+  assets.addSprite('player_walk_right_2', 'assets/scrooge_full_body_walk_right2.png');
+  assets.addSprite('player_walk_right_3', 'assets/scrooge_full_body_walk_right3.png');
+  assets.addSprite('player_walk_right_4', 'assets/scrooge_full_body_walk_right4.png');
+  assets.addSprite('player_walk_right_5', 'assets/scrooge_full_body_walk_right5.png');
+
   // NPC tileset
   assets.addSprite('ox', 'assets/ox_full_body.png');
   assets.addSprite('rat', 'assets/rat_full_body.png');
@@ -139,6 +147,17 @@ function loadEntities(){
       ['player_walk_left_3', 3],
       ['player_walk_left_4', 3],
       ['player_walk_left_5', 3],
+    ],
+    [
+      ['player_face_right', 25],
+    ],
+    [
+      ['player_walk_right_0', 3],
+      ['player_walk_right_1', 3],
+      ['player_walk_right_2', 3],
+      ['player_walk_right_3', 3],
+      ['player_walk_right_4', 3],
+      ['player_walk_right_5', 3],
     ],
   ];
   entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
