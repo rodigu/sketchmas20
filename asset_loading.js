@@ -66,6 +66,7 @@ function loadSprites(){
   // Misc
   assets.addSprite('letter0', 'assets/letter_plain.png');
   assets.addSprite('letter1', 'assets/letter_2.png');
+  assets.addSprite('open_letter', 'assets/letter1_open.png');
 
 }
 function loadHouses(){
@@ -116,7 +117,7 @@ function loadLetters(){
   letters = new Letters();
   letters.addLetter('l1', 3, 4, 0, 0,
     "Dear Mister Scrooge-moo,\n" +
-    "    I seem to have forgoten her ____ with\n" +
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In \n" +
     "Mr. Mouse"
     , 'letter' + str(~~random(2))
   );

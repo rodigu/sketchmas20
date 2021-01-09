@@ -115,7 +115,9 @@ class Letters{
         assets.showSprite(this.list[i].sprite, this.list[i].x*TILE, this.list[i].y*TILE);
         if (this.list[i].isShowing){
           fill(200);
-          rect(20, 20, width - 40, height - 40);
+          assets.resizeSprite('open_letter', 600);
+          // assets.showSprite('open_letter', 20, 20);
+          rect(40, 40,  560, 560);
           fill(0);
           text(this.list[i].contents, 60, 80);
         }
@@ -231,12 +233,13 @@ class House{
 function show(){
   playerControl();
   if (frameCount < 20)
-    for (var i = 0; i < assets.sprites.length; i++){
+    for (let i = 0; i < assets.sprites.length; i++){
       if (assets.sprites[i].id != 'rat')
         assets.sprites[i].resizeNN(TILE, 0);
       else
         assets.sprites[i].resizeNN(50, 0);
     }
+
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
