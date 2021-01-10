@@ -19,6 +19,7 @@ function loadSprites(){
   assets.addSprite('wardrobe0', 'assets/wardrobe_front_0.png');
   assets.addSprite('wardrobe1', 'assets/wardrobe_front_1.png');
   assets.addSprite('table', 'assets/table1.png');
+  assets.addSprite('void', 'assets/ceiling.png');
   assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('tile_ground1', 'assets/g.png');
   assets.addSprite('wall4', 'assets/wall_house_1_cornerpiece.png');
@@ -77,10 +78,10 @@ function loadSprites(){
 }
 function loadHouses(){
   current_house = 0;
-  room_position = [3,3];
+  room_position = [6,3];
   houses = [];
   let tileset = [
-    'tile_ground0', 'tile_ground0', 'tile_ground0', 'tile_ground0',
+    'void', 'tile_ground0', 'tile_ground0', 'tile_ground0',
     'wall4',  'wall5' , 'wall6',
     'wall7',            'wall8',
     'wall9',  'wall10', 'wall11',
@@ -316,7 +317,7 @@ function loadHouses(){
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 17, 1, 8],
-[7, 0, 0, 0, 0, 0, 0, 8]
+[7, 1, 1, 1, 1, 1, 1, 8]
 ]);
   houses[0].addRoom(2,3,[
 [4, 5, 5, 5, 5, 5, 5, 6],
@@ -351,9 +352,9 @@ function loadHouses(){
   houses[0].addRoom(6,3,[
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 1, 1, 8],
+[15, 1, 1, 1, 1, 1, 1, 8],
+[1, 1, 1, 1, 1, 1, 1, 8],
+[12, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8]
@@ -440,7 +441,7 @@ function loadHouses(){
 ]);
   houses[0].addRoom(1,5,[
 [4, 5, 5, 5, 5, 5, 5, 6],
-[7, 1, 1, 1, 1, 0, 1, 8],
+[7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 13, 12, 1, 8],
 [7, 1, 1, 16, 8, 7, 1, 8],
 [7, 18, 1, 1, 8, 9, 10, 11],
@@ -450,7 +451,7 @@ function loadHouses(){
 ]);
   houses[0].addRoom(2,5,[
 [7, 1, 14, 5, 5, 5, 5, 6],
-[7, 1, 1, 1, 1, 0, 1, 8],
+[7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 13, 12, 1, 1, 8],
 [7, 1, 1, 8, 7, 1, 1, 8],
@@ -460,7 +461,7 @@ function loadHouses(){
 ]);
   houses[0].addRoom(3,5,[
 [7, 1, 1, 1, 1, 1, 1, 14],
-[7, 1, 1, 1, 1, 0, 1, 1],
+[7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
@@ -470,7 +471,7 @@ function loadHouses(){
 ]);
   houses[0].addRoom(4,5,[
 [5, 5, 5, 15, 1, 14, 5, 5],
-[1, 1, 1, 1, 1, 0, 1, 1],
+[1, 1, 1, 1, 1, 1, 1, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
 [1, 1, 16, 1, 16, 1, 16, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
@@ -480,17 +481,17 @@ function loadHouses(){
 ]);
   houses[0].addRoom(5,5,[
 [5, 5, 5, 5, 5, 5, 5, 5],
-[1, 1, 1, 1, 1, 0, 1, 1],
+[1, 1, 1, 1, 1, 1, 1, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
 [1, 16, 1, 16, 1, 1, 1, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
 [1, 1, 1, 1, 1, 1, 1, 1],
-[10, 10, 10, 10, 10, 12, 0, 13]
+[10, 10, 10, 10, 10, 12, 1, 13]
 ]);
   houses[0].addRoom(6,5,[
 [15, 1, 1, 1, 1, 1, 1, 8],
-[1, 1, 1, 1, 1, 0, 1, 8],
+[1, 1, 1, 1, 1, 1, 1, 8],
 [1, 1, 1, 13, 10, 10, 10, 11],
 [1, 1, 1, 14, 5, 5, 5, 6],
 [1, 1, 1, 1, 1, 1, 1, 8],
@@ -500,7 +501,7 @@ function loadHouses(){
 ]);
   houses[0].addRoom(0,6,[
 [7, 1, 1, 1, 1, 1, 1, 14],
-[7, 1, 1, 1, 1, 0, 1, 1],
+[7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
 [7, 1, 1, 1, 1, 1, 1, 1],
@@ -571,8 +572,9 @@ function loadHouses(){
 }
 function loadLetters(){
   letters = new Letters();
-  letters.addLetter('l1', 3, 4, 0, 0,
-    [[
+  letters.addLetter('l1', 3, 4, 3, 3,
+    [
+    [
       "December 31st, 2020\n" +
       "Dear Mr. Scrooge-squeak,\n" +
       "    I am Ratford, and I am a rat-squeak squeak.\n" +
@@ -605,7 +607,7 @@ function loadLetters(){
       "apologize to Mr.Ox-squeak. \n" +
       "I hate to be relying on you, of all people, \n" +
       "however dire situations call for desperate \n" +
-      "measures-squeak. \n" +
+      "measures-squeak. \n\n" +
       "Without Mr. Ox we risk losing, squeak, the new year! \n" +
       "Now, I admit that my year was not the best-squeak.\n" +
       "However, I believe it was a better alternative to the end\n" +
@@ -678,11 +680,11 @@ function loadEntities(){
   let ent_cycles = [
     [['ox', 1]]
   ];
-  entities.addEntity('ox', TILE, TILE, ent_cycles, 0, 1);
+  entities.addEntity('ox', TILE, TILE, ent_cycles, 1, 1);
   ent_cycles = [
     [['rat', 1]]
   ];
-  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles, 0, 2);
+  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles, 1, 2);
 }
 
 function preload(){
