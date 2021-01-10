@@ -163,6 +163,8 @@ function keyReleased(){
   entities.setEntityCycle('player', 2);
   if(entities.getEntity('player').current_cycle === 5)
    entities.setEntityCycle('player', 4);
+ if(entities.getEntity('player').current_cycle === 7)
+  entities.setEntityCycle('player', 6);
 }
 function playerControl(){
   let walk = 3;
@@ -170,7 +172,7 @@ function playerControl(){
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   if (control['w']){
     entities.setEntityY('player', p.y - 10);
-    entities.setEntityCycle('player', 5);
+    entities.setEntityCycle('player', 7);
   }
   if (control['a']){
     entities.setEntityX('player', p.x - 10);
