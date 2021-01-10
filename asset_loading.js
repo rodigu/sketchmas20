@@ -34,6 +34,7 @@ function loadSprites(){
   assets.addSprite('wall13', 'assets/wall_house0_bottomright_innercornerpiece.png');
   assets.addSprite('wall14', 'assets/wall_house0_topright_innercornerpiece.png');
   assets.addSprite('wall15', 'assets/wall_house0_topleft_innercornerpiece.png');
+  assets.addSprite('wall_detailed0', 'assets/wall_house0_90right1.png');
 
   // Player Tiles
   assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
@@ -70,6 +71,10 @@ function loadSprites(){
   assets.addSprite('ox', 'assets/ox_full_body.png');
   assets.addSprite('rat', 'assets/rat_full_body.png');
 
+  assets.addSprite('dragon0', 'assets/dragon_fullbody0.png');
+  assets.addSprite('dragon1', 'assets/dragon_fullbody1.png');
+  assets.addSprite('dragon2', 'assets/dragon_fullbody2.png');
+
   // Misc
   assets.addSprite('letter0', 'assets/letter_plain.png');
   assets.addSprite('letter1', 'assets/letter_2.png');
@@ -78,7 +83,7 @@ function loadSprites(){
 }
 function loadHouses(){
   current_house = 0;
-  room_position = [6,3];
+  room_position = [3,3];
   houses = [];
   let tileset = [
     'void', 'tile_ground0', 'tile_ground0', 'tile_ground0',
@@ -86,7 +91,7 @@ function loadHouses(){
     'wall7',            'wall8',
     'wall9',  'wall10', 'wall11',
     'wall12', 'wall13', 'wall14', 'wall15',
-    'table', 'chair', 'wardrobe0'
+    'table', 'chair', 'wardrobe0', 'wall_detailed0'
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
@@ -443,7 +448,7 @@ function loadHouses(){
 [4, 5, 5, 5, 5, 5, 5, 6],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 13, 12, 1, 8],
-[7, 1, 1, 16, 8, 7, 1, 8],
+[7, 1, 1, 16, 8, 7, 1, 19],
 [7, 18, 1, 1, 8, 9, 10, 11],
 [15, 1, 1, 1, 14, 5, 5, 5],
 [1, 1, 1, 1, 1, 1, 1, 1],
@@ -675,7 +680,7 @@ function loadEntities(){
       ['player_walk_back_4', 3],
     ],
   ];
-  entities.addEntity('player', 4*TILE, 3*TILE, player_cycles);
+  entities.addEntity('player', 3*TILE, 2*TILE, player_cycles);
 
   let ent_cycles = [
     [['ox', 1]]
@@ -685,6 +690,10 @@ function loadEntities(){
     [['rat', 1]]
   ];
   entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles, 1, 2);
+  ent_cycles = [
+    [['dragon0', 6], ['dragon1', 6], ['dragon2', 6]]
+  ];
+  entities.addEntity('dragon', 2*TILE, 2*TILE, ent_cycles, 3, 3);
 }
 
 function preload(){
