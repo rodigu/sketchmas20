@@ -103,6 +103,7 @@ class Letter{
     this.contents = c_;
     this.isShowing = false;
     this.sprite = sprt_;
+    this.current_page = 0;
   }
 }
 class Letters{
@@ -119,13 +120,22 @@ class Letters{
           // assets.showSprite('open_letter', 20, 20);
           rect(40, 40,  560, 560);
           fill(0);
-          text(this.list[i].contents, 60, 80);
+          text(this.list[i].contents[this.list[i].current_page], 60, 80);
         }
       }
-      if (mouseIsPressed && this.list[i].isShowing)
-        this.list[i].isShowing = false;
-      if (mouseIsPressed && mouseX < this.list[i].x*TILE + TILE && mouseY < this.list[i].y*TILE + TILE && mouseY > this.list[i].y*TILE && mouseX > this.list[i].x*TILE)
+      if (mouseIsPressed && this.list[i].isShowing && frameCount - this.list[i].open_frame > 10){
+        this.list[i].open_frame = frameCount;
+        if (this.list[i].current_page < this.list[i].contents.length - 1 && mouseX > 3*width/4)
+          this.list[i].current_page ++;
+        else if(this.list[i].current_page > 0 && mouseX < width/4)
+          this.list[i].current_page --;
+        else
+          this.list[i].isShowing = false;
+      }
+      if (mouseIsPressed && mouseX < this.list[i].x*TILE + TILE && mouseY < this.list[i].y*TILE + TILE && mouseY > this.list[i].y*TILE && mouseX > this.list[i].x*TILE){
         this.list[i].isShowing = true;
+        this.list[i].open_frame = frameCount;
+      }
     }
   }
   getLetterIndex(id_){
@@ -153,6 +163,8 @@ function keyReleased(){
   entities.setEntityCycle('player', 2);
   if(entities.getEntity('player').current_cycle === 5)
    entities.setEntityCycle('player', 4);
+ if(entities.getEntity('player').current_cycle === 7)
+  entities.setEntityCycle('player', 6);
 }
 function playerControl(){
   let walk = 3;
@@ -160,7 +172,7 @@ function playerControl(){
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   if (control['w']){
     entities.setEntityY('player', p.y - 10);
-    entities.setEntityCycle('player', 5);
+    entities.setEntityCycle('player', 7);
   }
   if (control['a']){
     entities.setEntityX('player', p.x - 10);
@@ -243,14 +255,10 @@ function show(){
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   for (let i = 0; i < th.length; i++){
     for (let j = 0; j < th[i].length; j++){
-      fill(189, 114, 64);
-      if (th[i][j] == 0)
-      rect(j*TILE, i*TILE, TILE, TILE);
-      else{
-        if (th[i][j] > 14)
-          assets.showSprite(houses[current_house].tileset[1], j*TILE, i*TILE)
-        assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);
-      }
+      fill(1, 14, 64);
+      if (th[i][j] > 14)
+        assets.showSprite(houses[current_house].tileset[1], j*TILE, i*TILE);
+      assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);
     }
   }
   items.show();
