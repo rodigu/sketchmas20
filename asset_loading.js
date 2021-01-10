@@ -116,17 +116,55 @@ function loadHouses(){
 function loadLetters(){
   letters = new Letters();
   letters.addLetter('l1', 3, 4, 0, 0,
-    ["December 31st, 2020\n" +
-    "Dear Mr. Scrooge-squeak,\n" +
-    "    I am Ratford, and I am a rat-squeak squeak.\n" +
-    "But am not just any rat you will find squeak-zing\n" +
-    "through the filthy subway-tracks of the big cities like\n" +
-    "New York, no, no, no, squeak. I am the greatest rat who\n" +
-    "cleverly won the great race of twelve animals, all much\n" +
-    "larger than I, several thousands of years ago. But you\n" +
-    "see, even I, the great rat, encounter problems. \n" +
-    "Today, we animal I have kidnapped you to this house to\n" +
-    "address a particular problem we have-squeak. \n"]
+    [[
+      "December 31st, 2020\n" +
+      "Dear Mr. Scrooge-squeak,\n" +
+      "    I am Ratford, and I am a rat-squeak squeak.\n" +
+      "But am not just any rat you will find squeak-zing\n" +
+      "through the filthy subway-tracks of the big cities like\n" +
+      "New York, no, no, no, squeak. I am the greatest rat who\n" +
+      "cleverly won the great race of twelve animals, all much\n" +
+      "larger than I, several thousands of years ago. But you\n" +
+      "see, even I, the great rat, encounter problems. \n" +
+      "Today, we animals have kidnapped you to this house to\n" +
+      "address a particular problem we have-squeak. \n"
+    ],
+    [
+      "Before you close this letter and ignore what I am going\n" +
+      "to say, let me remind you of your year in 2020...\n" +
+      "I hope you know by now that you have not been a very\n" +
+      "good person throughout this year-squeak.\n" +
+      "Now, usually, we, animal spirits do not meddle with\n" +
+      "individual human affairs. However, this time, it seems\n" +
+      "that you somehow managed to do something that \n" +
+      "even we cannot overlook. You upset Mr. Ox, \n" +
+      "who was supposed to be in charge of this coming\n" +
+      "year-squeak. He is now locked up in his room, and\n" +
+      "we can’t get him out squeak. He says that only you could\n" +
+      "get him out on several conditions: \n"
+    ],
+    [
+      "that you bring all the keys hidden with the 11 other\n" +
+      "animal spirits found in this household, and \n" +
+      "apologize to Mr.Ox-squeak. \n" +
+      "I hate to be relying on you, of all people, \n" +
+      "however dire situations call for desperate \n" +
+      "measures-squeak. \n" +
+      "Without Mr. Ox we risk losing, squeak, the new year! \n" +
+      "Now, I admit that my year was not the best-squeak.\n" +
+      "However, I believe it was a better alternative to the end\n" +
+      "of the world-squeak! \n"
+    ],
+    [
+      "I hope you will, at the very least, do one good deed this\n" +
+      "year and help save next year-squeak. Go find the animal\n" +
+      "spirits in this house, using the WASD keys to move-squeak.\n" +
+      "The animal spirits will give you the key once you pass by\n" +
+      "them-squeak.\n" +
+      "\n" +
+      "Sincerely yours, \n" +
+      "Ratford \n"
+    ]]
     , 'letter' + str(~~random(2))
   );
 }
