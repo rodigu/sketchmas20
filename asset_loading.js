@@ -116,9 +116,17 @@ function loadHouses(){
 function loadLetters(){
   letters = new Letters();
   letters.addLetter('l1', 3, 4, 0, 0,
-    "Dear Mister Scrooge-moo,\n" +
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In \n" +
-    "Mr. Mouse"
+    ["December 31st, 2020\n" +
+    "Dear Mr. Scrooge-squeak,\n" +
+    "    I am Ratford, and I am a rat-squeak squeak.\n" +
+    "But am not just any rat you will find squeak-zing\n" +
+    "through the filthy subway-tracks of the big cities like\n" +
+    "New York, no, no, no, squeak. I am the greatest rat who\n" +
+    "cleverly won the great race of twelve animals, all much\n" +
+    "larger than I, several thousands of years ago. But you\n" +
+    "see, even I, the great rat, encounter problems. \n" +
+    "Today, we animal I have kidnapped you to this house to\n" +
+    "address a particular problem we have-squeak. \n"]
     , 'letter' + str(~~random(2))
   );
 }
