@@ -87,7 +87,7 @@ function loadHouses(){
     'wall12', 'wall13', 'wall14', 'wall15',
     'table', 'chair', 'wardrobe0'
   ];
-  houses.push(new House(6, tileset));
+  houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
   [4, 5, 5, 15, 1, 14, 5, 6],
   [7, 1, 1, 1, 1, 1, 18, 8],
