@@ -14,6 +14,15 @@ class Entity{
     }
     else {
       this.keys = 0;
+      this.showScoreTimer = 0;
+      this.score = () => {
+        textSize(200);
+        textAlign(CENTER, CENTER);
+        noStroke();
+        // fill(0, 0, 0, this.showScoreTimer*0.03);
+        text(11 - this.keys, width/2, height/2);
+        this.showScoreTimer--;
+      }
     }
   }
   update(){
@@ -24,6 +33,11 @@ class Entity{
       this.count = 0;
     }
     if (this.cycle_position >= this.animation_cycles[this.current_cycle].length) this.cycle_position = 0;
+    if(this.id == 'player'){
+      if (this.showScoreTimer > 0){
+        this.score();
+      }
+    }
   }
 }
 class Entities{
@@ -68,11 +82,12 @@ class Entities{
       if (this.list[i].id != "player" && this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1]){
         assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
         let pura = this.getEntity('player');
-        if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)/TILE) === ~~ ((pura.y - TILE/2)/(TILE)/TILE) && !te.didEncounter){
+        if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)) === ~~ ((pura.y - TILE/2)/(TILE)) && !te.didEncounter){
           this.list[this.getEntityIndex('player')].keys++;
+          this.list[this.getEntityIndex('player')].showScoreTimer = 30;
           this.list[i].didEncounter = true;
           assets.playSound('key');
-          console.log(~~((te.x - TILE/2)/(TILE)), ~~((pura.x - TILE/2)/(TILE)))
+          console.log(~~((te.x - TILE/2)/(TILE)), ~~((te.y - TILE/2)/(TILE)))
         }
       }
       else if (this.list[i].id == "player"){
@@ -142,6 +157,9 @@ class Letters{
           if (mouseX > 3*width/4) fill(200, 250, 200, 50);
           rect(3*width/4, 0, width/2, height);
           fill(0);
+          textSize(50);
+          textAlign(LEFT, TOP);
+          textLeading(40);
           text(this.list[i].contents[this.list[i].current_page], 60, 80);
         }
       }

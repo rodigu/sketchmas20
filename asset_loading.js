@@ -86,6 +86,15 @@ function loadSprites(){
 
   assets.addSprite('rooster0', 'assets/rooster_fullbody.png');
 
+  assets.addSprite('pig0', 'assets/pig_fullbody.png');
+
+  assets.addSprite('monkey0', 'assets/monkey_fullbody.png');
+
+  assets.addSprite('horse0', 'assets/horse_fullbody.png');
+
+  assets.addSprite('dog0', 'assets/dog_fullbody.png');
+
+
   // Misc
   assets.addSprite('letter0', 'assets/letter_plain.png');
   assets.addSprite('letter1', 'assets/letter_2.png');
@@ -696,7 +705,7 @@ function loadEntities(){
   let ent_cycles = [
     [['ox0', 1]]
   ];
-  entities.addEntity('ox', TILE, TILE, ent_cycles, 6, 3);
+  entities.addEntity('ox', TILE, TILE, ent_cycles, 8, 3);
   ent_cycles = [
     [['rat0', 1]]
   ];
@@ -721,6 +730,22 @@ function loadEntities(){
     [['rooster0', 1]]
   ];
   entities.addEntity('rooster', 6*TILE, 2*TILE, ent_cycles, 1, 4);
+  ent_cycles = [
+    [['pig0', 1]]
+  ];
+  entities.addEntity('pig', TILE, TILE, ent_cycles, 1, 2);
+  ent_cycles = [
+    [['dog0', 1]]
+  ];
+  entities.addEntity('dog', 4*TILE, 3*TILE, ent_cycles, 1, 1);
+  ent_cycles = [
+    [['monkey0', 1]]
+  ];
+  entities.addEntity('monkey', TILE, 5*TILE, ent_cycles, 6, 2);
+  ent_cycles = [
+    [['horse0', 1]]
+  ];
+  entities.addEntity('horse', 4*TILE, 4*TILE, ent_cycles, 3, 4);
 }
 
 function preload(){
