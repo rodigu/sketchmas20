@@ -9,6 +9,21 @@ class Entity{
     this.count = 0;
     this.room_x = roomx_;
     this.room_y = roomy_;
+    if (id_ != 'player'){
+      this.didEncounter = false;
+    }
+    else {
+      this.keys = 0;
+      this.showScoreTimer = 0;
+      this.score = () => {
+        textSize(200);
+        textAlign(CENTER, CENTER);
+        noStroke();
+        // fill(0, 0, 0, this.showScoreTimer*0.03);
+        text(11 - this.keys, width/2, height/2);
+        this.showScoreTimer--;
+      }
+    }
   }
   update(){
     this.count++;
@@ -18,6 +33,11 @@ class Entity{
       this.count = 0;
     }
     if (this.cycle_position >= this.animation_cycles[this.current_cycle].length) this.cycle_position = 0;
+    if(this.id == 'player'){
+      if (this.showScoreTimer > 0){
+        this.score();
+      }
+    }
   }
 }
 class Entities{
@@ -59,9 +79,20 @@ class Entities{
     for (let i = this.list.length - 1; i >= 0; i--){
       let te = this.list[i];
       this.list[i].update();
-      if (this.list[i].id != "player" && this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1])
+      if (this.list[i].id != "player" && this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1]){
         assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
-      else if (this.list[i].id == "player") assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
+        let pura = this.getEntity('player');
+        if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)) === ~~ ((pura.y - TILE/2)/(TILE)) && !te.didEncounter){
+          this.list[this.getEntityIndex('player')].keys++;
+          this.list[this.getEntityIndex('player')].showScoreTimer = 30;
+          this.list[i].didEncounter = true;
+          assets.playSound('key');
+          console.log(~~((te.x - TILE/2)/(TILE)), ~~((te.y - TILE/2)/(TILE)))
+        }
+      }
+      else if (this.list[i].id == "player"){
+        assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
+      }
     }
   }
 }
@@ -116,9 +147,9 @@ class Letters{
         assets.showSprite(this.list[i].sprite, this.list[i].x*TILE, this.list[i].y*TILE);
         if (this.list[i].isShowing){
           fill(200);
-          assets.resizeSprite('open_letter', 600);
-          // assets.showSprite('open_letter', 20, 20);
-          rect(40, 40,  560, 560);
+          assets.resizeSprite('open_letter', 640);
+          assets.showSprite('open_letter', -10, 0);
+          // rect(40, 40,  560, 560);
           fill(0, 10);
           if (mouseX < width/4) fill(200, 250, 200, 20);
           rect(0, 0, width/4, height);
@@ -126,6 +157,9 @@ class Letters{
           if (mouseX > 3*width/4) fill(200, 250, 200, 50);
           rect(3*width/4, 0, width/2, height);
           fill(0);
+          textSize(50);
+          textAlign(LEFT, TOP);
+          textLeading(40);
           text(this.list[i].contents[this.list[i].current_page], 60, 80);
         }
       }
@@ -250,9 +284,10 @@ class House{
 
 function show(){
   playerControl();
+
   if (frameCount < 20)
     for (let i = 0; i < assets.sprites.length; i++){
-      if (assets.sprites[i].id != 'rat')
+      if (assets.sprites[i].id != 'rat0')
         assets.sprites[i].resizeNN(TILE, 0);
       else
         assets.sprites[i].resizeNN(50, 0);
