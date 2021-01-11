@@ -81,7 +81,8 @@ class GameAssets{
     return null;
   }
   playSound(id_){
-    this.sounds[this.getSoundIndex(id_)].file.play();
+    if (!this.sounds[this.getSoundIndex(id_)].isPlaying())
+      this.sounds[this.getSoundIndex(id_)].play();
   }
   showSprite(id_, x_, y_){
     let index = this.getSpriteIndex(id_);

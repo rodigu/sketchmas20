@@ -14,6 +14,8 @@ function loadSprites(){
   //   14  5  15
   //
 
+  assets.addSound('key', 'assets/got_key_soundeffect.mp3');
+
   // House 0 tiles
   assets.addSprite('chair', 'assets/chair2.png');
   assets.addSprite('wardrobe0', 'assets/wardrobe_front_0.png');
@@ -68,12 +70,21 @@ function loadSprites(){
   assets.addSprite('player_walk_back_4', 'assets/scrooge_back_walk4.png');
 
   // NPC tileset
-  assets.addSprite('ox', 'assets/ox_full_body.png');
-  assets.addSprite('rat', 'assets/rat_full_body.png');
+  assets.addSprite('ox0', 'assets/ox_full_body.png');
+
+  assets.addSprite('rat0', 'assets/rat_full_body.png');
 
   assets.addSprite('dragon0', 'assets/dragon_fullbody0.png');
   assets.addSprite('dragon1', 'assets/dragon_fullbody1.png');
   assets.addSprite('dragon2', 'assets/dragon_fullbody2.png');
+
+  assets.addSprite('snake0', 'assets/snake_fullbody.png');
+
+  assets.addSprite('sheep0', 'assets/sheep_fullbody.png');
+
+  assets.addSprite('tiger0', 'assets/tiger_fullbody.png');
+
+  assets.addSprite('rooster0', 'assets/rooster_fullbody.png');
 
   // Misc
   assets.addSprite('letter0', 'assets/letter_plain.png');
@@ -683,17 +694,33 @@ function loadEntities(){
   entities.addEntity('player', 3*TILE, 2*TILE, player_cycles);
 
   let ent_cycles = [
-    [['ox', 1]]
+    [['ox0', 1]]
   ];
-  entities.addEntity('ox', TILE, TILE, ent_cycles, 1, 1);
+  entities.addEntity('ox', TILE, TILE, ent_cycles, 6, 3);
   ent_cycles = [
-    [['rat', 1]]
+    [['rat0', 1]]
   ];
-  entities.addEntity('rat', 2*TILE, 2*TILE, ent_cycles, 1, 2);
+  entities.addEntity('rat', TILE, TILE, ent_cycles, 2, 3);
   ent_cycles = [
     [['dragon0', 6], ['dragon1', 6], ['dragon2', 6]]
   ];
-  entities.addEntity('dragon', 2*TILE, 2*TILE, ent_cycles, 3, 3);
+  entities.addEntity('dragon', 4*TILE, 6*TILE, ent_cycles, 5, 4);
+  ent_cycles = [
+    [['snake0', 1]]
+  ];
+  entities.addEntity('snake', TILE, TILE, ent_cycles, 2, 4);
+  ent_cycles = [
+    [['sheep0', 1]]
+  ];
+  entities.addEntity('sheep', 6*TILE, TILE, ent_cycles, 4, 6);
+  ent_cycles = [
+    [['tiger0', 1]]
+  ];
+  entities.addEntity('tiger', 6*TILE, 6*TILE, ent_cycles, 5, 2);
+  ent_cycles = [
+    [['rooster0', 1]]
+  ];
+  entities.addEntity('rooster', 6*TILE, 2*TILE, ent_cycles, 1, 4);
 }
 
 function preload(){
