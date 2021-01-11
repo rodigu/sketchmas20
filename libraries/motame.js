@@ -119,6 +119,12 @@ class Letters{
           assets.resizeSprite('open_letter', 600);
           // assets.showSprite('open_letter', 20, 20);
           rect(40, 40,  560, 560);
+          fill(0, 10);
+          if (mouseX < width/4) fill(200, 250, 200, 20);
+          rect(0, 0, width/4, height);
+          fill(0, 10);
+          if (mouseX > 3*width/4) fill(200, 250, 200, 50);
+          rect(3*width/4, 0, width/2, height);
           fill(0);
           text(this.list[i].contents[this.list[i].current_page], 60, 80);
         }
