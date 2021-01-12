@@ -22,6 +22,7 @@ let gravity;
 const fireworks = [];
 var showFireworks;
 var didClickLetter = false;
+var playerSpeed = 10;
 
 function setup(){
   smooth(0);

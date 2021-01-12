@@ -86,6 +86,7 @@ class Entities{
         let pura = this.getEntity('player');
         if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)) === ~~ ((pura.y - TILE/2)/(TILE)) && !te.didEncounter){
           this.list[this.getEntityIndex('player')].keys++;
+          playerSpeed += 1.5;
           this.list[this.getEntityIndex('player')].showScoreTimer = 30;
           this.list[i].didEncounter = true;
           assets.playSound('key');
@@ -215,45 +216,45 @@ function playerControl(){
   let p = entities.getEntity('player');
   let th = houses[current_house].rooms[room_position[0]][room_position[1]];
   if (control['w']){
-    entities.setEntityY('player', p.y - 10);
+    entities.setEntityY('player', p.y - playerSpeed);
     entities.setEntityCycle('player', 7);
   }
   if (control['a']){
-    entities.setEntityX('player', p.x - 10);
+    entities.setEntityX('player', p.x - playerSpeed);
     entities.setEntityCycle('player', 3);
   }
   if (control['d']){
-    entities.setEntityX('player', p.x + 10);
+    entities.setEntityX('player', p.x + playerSpeed);
     entities.setEntityCycle('player', 5);
   }
   if (control['s']){
-    entities.setEntityY('player', p.y + 10);
+    entities.setEntityY('player', p.y + playerSpeed);
     entities.setEntityCycle('player', 1);
   }
 
   if (p.x > 0 && p.y > 0 && th[~~((p.y + TILE/5)/TILE)]       [~~((p.x + TILE/5)/TILE)] > walk){
     if (control['w'])
-      entities.setEntityY('player', p.y+10);
+      entities.setEntityY('player', p.y+playerSpeed);
     if (control['a'])
-      entities.setEntityX('player', p.x+10);
+      entities.setEntityX('player', p.x+playerSpeed);
   }
   if (p.x < width - TILE && p.y > 0 && th[~~((p.y + TILE/5)/TILE)]       [~~((p.x + TILE - TILE/3)/TILE)] > walk){
     if (control['w'])
-      entities.setEntityY('player', p.y+10);
+      entities.setEntityY('player', p.y+playerSpeed);
     if (control['d'])
-      entities.setEntityX('player', p.x-10);
+      entities.setEntityX('player', p.x-playerSpeed);
   }
   if (p.x > 0 && p.y < height - TILE && th[~~((p.y + TILE - TILE/10)/TILE)][~~((p.x + TILE/5)/TILE)] > walk){
     if (control['s'])
-      entities.setEntityY('player', p.y-10);
+      entities.setEntityY('player', p.y-playerSpeed);
     if (control['a'])
-      entities.setEntityX('player', p.x+10);
+      entities.setEntityX('player', p.x+playerSpeed);
   }
   if (p.x < width - TILE && p.y < height - TILE && th[~~((p.y + TILE - TILE/10)/TILE)][~~((p.x + TILE - TILE/3)/TILE)] > walk){
     if (control['s'])
-      entities.setEntityY('player', p.y-10);
+      entities.setEntityY('player', p.y-playerSpeed);
     if (control['d'])
-      entities.setEntityX('player', p.x-10);
+      entities.setEntityX('player', p.x-playerSpeed);
   }
 
   if ((p.x + TILE/2) > (width)){
