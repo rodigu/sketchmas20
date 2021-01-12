@@ -167,6 +167,7 @@ class Letters{
         }
       }
       if (mouseIsPressed && this.list[i].isShowing && frameCount - this.list[i].open_frame > 10){
+        if (!didClickLetter) didClickLetter = true;
         this.list[i].open_frame = frameCount;
         if (this.list[i].current_page < this.list[i].contents.length - 1 && mouseX > 3*width/4)
           this.list[i].current_page ++;
@@ -313,15 +314,15 @@ function show(){
   }
   items.show();
   entities.show();
-  letters.update();
-  if (room_position[0] === 3 && room_position[1] === 3){
+  if (room_position[0] === 3 && room_position[1] === 3 && !didClickLetter){
     textSize(40);
     textAlign(CENTER, CENTER);
     fill(200);
     stroke(0);
-    strokeWeight(2 + frameCount%5);
+    strokeWeight(7 - (frameCount/2)%4);
     text("click on letter", 3.5*TILE, 3.8*TILE);
   }
+  letters.update();
   if (showFireworks){
     if (random(1) < 0.3) {
       fireworks.push(new Firework());

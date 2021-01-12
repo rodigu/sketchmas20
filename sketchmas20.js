@@ -21,6 +21,7 @@ var letters;
 let gravity;
 const fireworks = [];
 var showFireworks;
+var didClickLetter = false;
 
 function setup(){
   smooth(0);
