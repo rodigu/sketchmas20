@@ -18,8 +18,9 @@ class Entity{
       this.score = () => {
         textSize(200);
         textAlign(CENTER, CENTER);
-        noStroke();
-        // fill(0, 0, 0, this.showScoreTimer*0.03);
+        strokeWeight(2);
+        stroke(200);
+        fill(0, 0, 0);
         text(11 - this.keys, width/2, height/2);
         this.showScoreTimer--;
       }

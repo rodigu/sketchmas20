@@ -81,6 +81,8 @@ function loadSprites(){
   assets.addSprite('snake0', 'assets/snake_fullbody.png');
 
   assets.addSprite('sheep0', 'assets/sheep_fullbody.png');
+  assets.addSprite('sheep1', 'assets/sheep_fullbody0.png');
+  assets.addSprite('sheep2', 'assets/sheep_fullbody1.png');
 
   assets.addSprite('tiger0', 'assets/tiger_fullbody.png');
 
@@ -719,7 +721,7 @@ function loadEntities(){
   ];
   entities.addEntity('snake', TILE, TILE, ent_cycles, 2, 4);
   ent_cycles = [
-    [['sheep0', 1]]
+    [['sheep0', 15], ['sheep1', 15], ['sheep2', 15]]
   ];
   entities.addEntity('sheep', 6*TILE, TILE, ent_cycles, 4, 6);
   ent_cycles = [
