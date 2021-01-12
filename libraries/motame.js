@@ -11,6 +11,7 @@ class Entity{
     this.room_y = roomy_;
     if (id_ != 'player'){
       this.didEncounter = false;
+      if (this.id === 'ox') this.didEncounter = true;
     }
     else {
       this.keys = 0;
@@ -289,21 +290,8 @@ function show(){
   if (entities.getEntity('player').keys >= 1) {
     room_position = [1, 3];
   }
-  if (room_position === [1, 3]){
+  if (room_position[0] === 1 && room_position[1] === 3){
     showFireworks = true;
-  }
-
-  if (showFireworks){
-    if (random(1) < 0.03) {
-      fireworks.push(new Firework());
-    }
-    for (let i = fireworks.length - 1; i >= 0; i--) {
-      fireworks[i].update();
-      fireworks[i].show();
-      if (fireworks[i].done()) {
-        fireworks.splice(i, 1);
-      }
-    }
   }
 
   if (frameCount < 20)
@@ -326,4 +314,16 @@ function show(){
   items.show();
   entities.show();
   letters.update();
+  if (showFireworks){
+    if (random(1) < 0.3) {
+      fireworks.push(new Firework());
+    }
+    for (let i = fireworks.length - 1; i >= 0; i--) {
+      fireworks[i].update();
+      fireworks[i].show();
+      if (fireworks[i].done()) {
+        fireworks.splice(i, 1);
+      }
+    }
+  }
 }
