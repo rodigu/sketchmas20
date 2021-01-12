@@ -50,6 +50,9 @@ function loadSprites(){
   assets.addSprite('player_walk_front_2', 'assets/scrooge_face_front_2.png');
   assets.addSprite('player_walk_front_3', 'assets/scrooge_face_front_3.png');
   assets.addSprite('player_walk_front_4', 'assets/scrooge_face_front_4.png');
+  assets.addSprite('player_walk_front_5', 'assets/wall_house0_90left1.png');
+  assets.addSprite('player_walk_front_6', 'assets/wall_house0_bottomleft_cornerpiece1.png');
+  assets.addSprite('player_walk_front_7', 'assets/wall_house0_topleft_cornerpiece1.png');
 
   assets.addSprite('player_face_left_0', 'assets/scrooge_full_body_0.png');
   assets.addSprite('player_face_left_1', 'assets/scrooge_full_body_1.png');
@@ -120,7 +123,8 @@ function loadHouses(){
     'wall12', 'wall13', 'wall14', 'wall15',
     'table', 'chair', 'wardrobe0', 'wall_detailed0',
     'wall_detailed1', 'wall_detailed2', 'wall_detailed3',
-    'table_h', 'wall_detailed4'
+    'table_h', 'wall_detailed4', 'wall_detailed5',
+    'wall_detailed6', 'wall_detailed7' 
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
