@@ -18,10 +18,15 @@ var current_house;
 var room_position;
 var items;
 var letters;
+let gravity;
+const fireworks = [];
+var showFireworks;
 
 function setup(){
   smooth(0);
+  showFireworks = false;
   frameRate(30);
+  gravity = createVector(0, 0.2);
   noStroke();
   game_state = 0;
   canv = createCanvas(640, 640);

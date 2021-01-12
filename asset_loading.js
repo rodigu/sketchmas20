@@ -42,6 +42,9 @@ function loadSprites(){
   assets.addSprite('wall_detailed2', 'assets/wall_house0_vertical2.png');
   assets.addSprite('wall_detailed3', 'assets/wall_house0_vertical1.png');
   assets.addSprite('wall_detailed4', 'assets/wall_house0_90right0.png');
+  assets.addSprite('wall_detailed5', 'assets/wall_house0_90left1.png');
+  assets.addSprite('wall_detailed6', 'assets/wall_house0_bottomleft_cornerpiece1.png');
+  assets.addSprite('wall_detailed7', 'assets/wall_house0_topleft_cornerpiece1.png');
 
   // Player Tiles
   assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
@@ -124,7 +127,7 @@ function loadHouses(){
     'table', 'chair', 'wardrobe0', 'wall_detailed0',
     'wall_detailed1', 'wall_detailed2', 'wall_detailed3',
     'table_h', 'wall_detailed4', 'wall_detailed5',
-    'wall_detailed6', 'wall_detailed7' 
+    'wall_detailed6', 'wall_detailed7'
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
@@ -136,8 +139,7 @@ function loadHouses(){
   [7, 1, 1, 1, 1, 1, 1, 8],
   [7, 1, 1, 1, 1, 17, 16, 8],
   [9, 10, 10, 12, 1, 13, 10, 11]
-  ]
-  );
+  ]);
   houses[0].addRoom(0,0,[
 [4, 5, 5, 5, 5, 5, 5, 5],
 [7, 1, 1, 1, 1, 1, 1, 1],
@@ -368,13 +370,13 @@ function loadHouses(){
 [9, 10, 10, 10, 10, 10, 10, 11]
 ]);
   houses[0].addRoom(4,3,[
-[4, 5, 5, 15, 1, 14, 5, 6],
-[7, 18, 1, 1, 1, 1, 1, 8],
-[7, 17, 1, 1, 1, 1, 1, 14],
-[7, 1, 1, 1, 1, 1, 1, 1],
-[7, 1, 1, 1, 1, 1, 1, 13],
-[7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 17, 1, 8],
+[4,  5,  5, 15,  1, 14,  5, 6],
+[7, 18,  1,  1,  1,  1,  1, 8],
+[7, 17,  1,  1,  1,  1,  1, 14],
+[7,  1,  1,  1,  1,  1,  1, 1],
+[7,  1,  1,  1,  1,  1,  1, 13],
+[7,  1,  1,  1,  1,  1,  1, 8],
+[7,  1,  1,  1,  1, 17,  1, 8],
 [9, 10, 10, 10, 10, 10, 10, 11]
 ]);
   houses[0].addRoom(5,3,[
@@ -750,7 +752,7 @@ function loadEntities(){
   ent_cycles = [
     [['dog0', 1]]
   ];
-  entities.addEntity('dog', 4*TILE, 3*TILE, ent_cycles, 1, 1);
+  entities.addEntity('dog', TILE, TILE, ent_cycles, 4, 3);
   ent_cycles = [
     [['monkey0', 1]]
   ];

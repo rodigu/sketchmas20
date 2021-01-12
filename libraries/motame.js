@@ -64,7 +64,7 @@ class Entities{
       if (this.list[i].id == id_) return this.list[i];
   }
   setEntityCycle(id_, c_){
-    if (this.list[this.getEntityIndex(id_)].current_cycle == c_) return;
+    if (this.list[this.getEntityIndex(id_)].current_cycle == c_) { return; }
     this.list[this.getEntityIndex(id_)].cycle_position = 0;
     this.list[this.getEntityIndex(id_)].current_cycle = c_;
     this.list[this.getEntityIndex(id_)].count = 0;
@@ -152,11 +152,12 @@ class Letters{
           assets.showSprite('open_letter', -10, 0);
           // rect(40, 40,  560, 560);
           fill(0, 10);
+          noStroke();
           if (mouseX < width/4) fill(200, 250, 200, 20);
-          rect(0, 0, width/4, height);
+          rect(0, 0, width/7, height);
           fill(0, 10);
           if (mouseX > 3*width/4) fill(200, 250, 200, 50);
-          rect(3*width/4, 0, width/2, height);
+          rect(6*width/7, 0, width/2, height);
           fill(0);
           textSize(50);
           textAlign(LEFT, TOP);
@@ -285,6 +286,23 @@ class House{
 
 function show(){
   playerControl();
+
+  if (room_position === [1, 3]){
+    showFireworks = true;
+  }
+
+  if (showFireworks){
+    if (random(1) < 0.03) {
+      fireworks.push(new Firework());
+    }
+    for (let i = fireworks.length - 1; i >= 0; i--) {
+      fireworks[i].update();
+      fireworks[i].show();
+      if (fireworks[i].done()) {
+        fireworks.splice(i, 1);
+      }
+    }
+  }
 
   if (frameCount < 20)
     for (let i = 0; i < assets.sprites.length; i++){
