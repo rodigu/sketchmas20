@@ -286,7 +286,9 @@ class House{
 
 function show(){
   playerControl();
-
+  if (entities.getEntity('player').keys >= 1) {
+    room_position = [1, 3];
+  }
   if (room_position === [1, 3]){
     showFireworks = true;
   }

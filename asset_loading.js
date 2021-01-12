@@ -762,7 +762,7 @@ function loadEntities(){
   ent_cycles = [
     [['dog0', 1]]
   ];
-  entities.addEntity('dog', TILE, TILE, ent_cycles, 4, 3);
+  entities.addEntity('dog', 2*TILE, 3*TILE, ent_cycles, 4, 3);
   ent_cycles = [
     [['monkey0', 1]]
   ];
