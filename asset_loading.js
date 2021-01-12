@@ -730,7 +730,7 @@ function loadEntities(){
   let ent_cycles = [
     [['ox0', 1]]
   ];
-  entities.addEntity('ox', 4*TILE, 4*TILE, ent_cycles, 1, 3);
+  entities.addEntity('ox', 4*TILE, 6*TILE, ent_cycles, 1, 3);
   ent_cycles = [
     [['rat0', 1]]
   ];

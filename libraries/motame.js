@@ -287,7 +287,7 @@ class House{
 
 function show(){
   playerControl();
-  if (entities.getEntity('player').keys >= 1) {
+  if (entities.getEntity('player').keys >= 11) {
     room_position = [1, 3];
   }
   if (room_position[0] === 1 && room_position[1] === 3){
@@ -314,6 +314,14 @@ function show(){
   items.show();
   entities.show();
   letters.update();
+  if (room_position[0] === 3 && room_position[1] === 3){
+    textSize(40);
+    textAlign(CENTER, CENTER);
+    fill(200);
+    stroke(0);
+    strokeWeight(2 + frameCount%5);
+    text("click on letter", 3.5*TILE, 3.8*TILE);
+  }
   if (showFireworks){
     if (random(1) < 0.3) {
       fireworks.push(new Firework());
@@ -327,7 +335,7 @@ function show(){
     }
     textAlign(CENTER, CENTER);
     textSize(150);
-    fill(0, 20);
+    fill(0, 10);
     text("HAPPY NEW YEAR!", width/2, height/2);
   }
 }
