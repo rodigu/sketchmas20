@@ -86,7 +86,7 @@ class Entities{
         let pura = this.getEntity('player');
         if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)) === ~~ ((pura.y - TILE/2)/(TILE)) && !te.didEncounter){
           this.list[this.getEntityIndex('player')].keys++;
-          playerSpeed += 1.5;
+          playerSpeed += 1;
           this.list[this.getEntityIndex('player')].showScoreTimer = 30;
           this.list[i].didEncounter = true;
           assets.playSound('key');
