@@ -15,6 +15,11 @@ function loadSprites(){
   //
 
   assets.addSound('key', 'assets/got_key_soundeffect.mp3');
+  assets.addSound('end', 'assets/happyNewYearSound.mp3');
+  assets.addSound('foot1', 'assets/footstep1.mp3');
+  assets.addSound('foot2', 'assets/footstep2.mp3');
+  assets.addSound('foot3', 'assets/footstep3.mp3');
+  assets.addSound('foot4', 'assets/footstep4.mp3');
 
   // House 0 tiles
   assets.addSprite('chair', 'assets/chair2.png');
@@ -45,6 +50,14 @@ function loadSprites(){
   assets.addSprite('wall_detailed5', 'assets/wall_house0_90left1.png');
   assets.addSprite('wall_detailed6', 'assets/wall_house0_bottomleft_cornerpiece1.png');
   assets.addSprite('wall_detailed7', 'assets/wall_house0_topleft_cornerpiece1.png');
+
+  assets.addSprite('animal_fur0', 'assets/floor_tile_rat.png');
+  assets.addSprite('animal_fur1', 'assets/wall_house0_90left1_horse.png');
+  assets.addSprite('animal_fur2', 'assets/wall_house0_90right_horse.png');
+  assets.addSprite('animal_fur3', 'assets/wall_house0_rotated180_horse.png');
+  assets.addSprite('animal_fur4', 'assets/wall_house0_vertical_horse.png');
+  assets.addSprite('animal_fur5', 'assets/rat_bed.png');
+  assets.addSprite('animal_fur6', 'assets/rat_obj.png');
 
   // Player Tiles
   assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
@@ -119,7 +132,7 @@ function loadHouses(){
   room_position = [3,3];
   houses = [];
   let tileset = [
-    'void', 'tile_ground0', 'tile_ground0', 'tile_ground0',
+    'void', 'tile_ground0', 'animal_fur0', 'tile_ground0',
     'wall4',  'wall5' , 'wall6',
     'wall7',            'wall8',
     'wall9',  'wall10', 'wall11',
@@ -127,7 +140,10 @@ function loadHouses(){
     'table', 'chair', 'wardrobe0', 'wall_detailed0',
     'wall_detailed1', 'wall_detailed2', 'wall_detailed3',
     'table_h', 'wall_detailed4', 'wall_detailed5',
-    'wall_detailed6', 'wall_detailed7'
+    'wall_detailed6', 'wall_detailed7',
+    'animal_fur0', 'animal_fur1', 'animal_fur2',
+    'animal_fur3', 'animal_fur4', 'animal_fur5',
+    'animal_fur6'
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
@@ -371,12 +387,12 @@ function loadHouses(){
 ]);
   houses[0].addRoom(2,3,[
 [4, 5, 5, 5, 20, 5, 5, 6],
-[7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 1, 1, 14],
-[7, 1, 1, 23, 1, 1, 1, 1],
-[7, 1, 1, 1, 1, 1, 1, 13],
-[7, 1, 1, 1, 1, 1, 1, 8],
-[7, 1, 1, 1, 1, 17, 1, 8],
+[7, 2, 2, 2, 2, 2, 2, 8],
+[7, 33, 2, 2, 2, 2, 2, 14],
+[7, 34, 2, 23, 2, 2, 2, 2],
+[7, 2, 2, 2, 2, 2, 2, 13],
+[7, 2, 2, 2, 2, 2, 2, 8],
+[7, 2, 2, 2, 2, 17, 2, 8],
 [9, 10, 10, 10, 10, 10, 10, 11]
 ]);
   houses[0].addRoom(4,3,[
@@ -440,7 +456,7 @@ function loadHouses(){
 [7, 2, 13, 10, 10, 10, 10, 10]
 ]);
   houses[0].addRoom(3,4,[
-[4, 21, 5, 15, 1, 14, 5, 6],
+[4, 5, 5, 15, 1, 14, 5, 6],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 16, 19],
@@ -766,7 +782,7 @@ function loadEntities(){
   ent_cycles = [
     [['monkey0', 1]]
   ];
-  entities.addEntity('monkey', TILE, 5*TILE, ent_cycles, 6, 2);
+  entities.addEntity('monkey', 6*TILE, 2*TILE, ent_cycles, 1, 5);
   ent_cycles = [
     [['horse0', 1]]
   ];

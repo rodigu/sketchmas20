@@ -23,10 +23,13 @@ const fireworks = [];
 var showFireworks;
 var didClickLetter = false;
 var playerSpeed = 10;
+var def_flo = 1;
+var endPlayed = false;
 
 function setup(){
   smooth(0);
   showFireworks = false;
+  masterVolume(0.1);
   frameRate(30);
   gravity = createVector(0, 0.2);
   noStroke();

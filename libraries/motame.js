@@ -84,13 +84,17 @@ class Entities{
       if (this.list[i].id != "player" && this.list[i].room_x == room_position[0] && this.list[i].room_y == room_position[1]){
         assets.showSprite(entities.getEntitySprite(te.id), te.x, te.y);
         let pura = this.getEntity('player');
+        let th = houses[current_house].rooms[room_position[0]][room_position[1]];
+        let an_flo = ['horse', 'rat', 'rabbit', 'tiger', 'ox', 'monkey', 'snake', 'dragon', 'sheep', 'rooster'];
+        if (an_flo.includes(this.list[i].id)){
+          def_flo = 2;
+        }
         if (~~((te.x - TILE/2)/(TILE)) === ~~((pura.x - TILE/2)/(TILE)) && ~~((te.y - TILE/2)/(TILE)) === ~~ ((pura.y - TILE/2)/(TILE)) && !te.didEncounter){
           this.list[this.getEntityIndex('player')].keys++;
           playerSpeed += 1;
           this.list[this.getEntityIndex('player')].showScoreTimer = 30;
           this.list[i].didEncounter = true;
           assets.playSound('key');
-          console.log(~~((te.x - TILE/2)/(TILE)), ~~((te.y - TILE/2)/(TILE)))
         }
       }
       else if (this.list[i].id == "player"){
@@ -218,17 +222,21 @@ function playerControl(){
   if (control['w']){
     entities.setEntityY('player', p.y - playerSpeed);
     entities.setEntityCycle('player', 7);
+    assets.playSound('foot' + str(~~random(1, 5)));
   }
   if (control['a']){
     entities.setEntityX('player', p.x - playerSpeed);
+    assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 3);
   }
   if (control['d']){
     entities.setEntityX('player', p.x + playerSpeed);
+    assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 5);
   }
   if (control['s']){
     entities.setEntityY('player', p.y + playerSpeed);
+    assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 1);
   }
 
@@ -289,7 +297,7 @@ class House{
 
 function show(){
   playerControl();
-  if (entities.getEntity('player').keys >= 11) {
+  if (entities.getEntity('player').keys >= 10) {
     room_position = [1, 3];
   }
   if (room_position[0] === 1 && room_position[1] === 3){
@@ -309,10 +317,11 @@ function show(){
     for (let j = 0; j < th[i].length; j++){
       fill(1, 14, 64);
       if (th[i][j] > 14)
-        assets.showSprite(houses[current_house].tileset[1], j*TILE, i*TILE);
+        assets.showSprite(houses[current_house].tileset[def_flo], j*TILE, i*TILE);
       assets.showSprite(houses[current_house].tileset[th[i][j]], j*TILE, i*TILE);
     }
   }
+  def_flo = 1;
   items.show();
   entities.show();
   if (room_position[0] === 3 && room_position[1] === 3 && !didClickLetter){
@@ -339,5 +348,9 @@ function show(){
     textSize(150);
     fill(0, 10);
     text("HAPPY NEW YEAR!", width/2, height/2);
+    if (!endPlayed){
+      assets.playSound('end');
+      endPlayed = true;
+    }
   }
 }
