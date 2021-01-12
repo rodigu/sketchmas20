@@ -20,7 +20,8 @@ function loadSprites(){
   assets.addSprite('chair', 'assets/chair2.png');
   assets.addSprite('wardrobe0', 'assets/wardrobe_front_0.png');
   assets.addSprite('wardrobe1', 'assets/wardrobe_front_1.png');
-  assets.addSprite('table', 'assets/table1.png');
+  assets.addSprite('table', 'assets/table0.png');
+  assets.addSprite('table_h', 'assets/table1.png')
   assets.addSprite('void', 'assets/ceiling.png');
   assets.addSprite('tile_ground0', 'assets/floor_tile.png');
   assets.addSprite('tile_ground1', 'assets/g.png');
@@ -37,6 +38,10 @@ function loadSprites(){
   assets.addSprite('wall14', 'assets/wall_house0_topright_innercornerpiece.png');
   assets.addSprite('wall15', 'assets/wall_house0_topleft_innercornerpiece.png');
   assets.addSprite('wall_detailed0', 'assets/wall_house0_90right1.png');
+  assets.addSprite('wall_detailed1', 'assets/wall_house0_vertical3.png');
+  assets.addSprite('wall_detailed2', 'assets/wall_house0_vertical2.png');
+  assets.addSprite('wall_detailed3', 'assets/wall_house0_vertical1.png');
+  assets.addSprite('wall_detailed4', 'assets/wall_house0_90right0.png');
 
   // Player Tiles
   assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
@@ -113,7 +118,9 @@ function loadHouses(){
     'wall7',            'wall8',
     'wall9',  'wall10', 'wall11',
     'wall12', 'wall13', 'wall14', 'wall15',
-    'table', 'chair', 'wardrobe0', 'wall_detailed0'
+    'table', 'chair', 'wardrobe0', 'wall_detailed0',
+    'wall_detailed1', 'wall_detailed2', 'wall_detailed3',
+    'table_h', 'wall_detailed4'
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
