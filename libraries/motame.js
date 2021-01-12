@@ -325,5 +325,9 @@ function show(){
         fireworks.splice(i, 1);
       }
     }
+    textAlign(CENTER, CENTER);
+    textSize(150);
+    fill(0, 20);
+    text("HAPPY NEW YEAR!", width/2, height/2);
   }
 }
