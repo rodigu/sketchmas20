@@ -222,21 +222,21 @@ function playerControl(){
   if (control['w']){
     entities.setEntityY('player', p.y - playerSpeed);
     entities.setEntityCycle('player', 7);
-    assets.playSound('foot' + str(~~random(1, 5)));
+    // assets.playSound('foot' + str(~~random(1, 5)));
   }
   if (control['a']){
     entities.setEntityX('player', p.x - playerSpeed);
-    assets.playSound('foot' + str(~~random(1, 5)));
+    // assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 3);
   }
   if (control['d']){
     entities.setEntityX('player', p.x + playerSpeed);
-    assets.playSound('foot' + str(~~random(1, 5)));
+    // assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 5);
   }
   if (control['s']){
     entities.setEntityY('player', p.y + playerSpeed);
-    assets.playSound('foot' + str(~~random(1, 5)));
+    // assets.playSound('foot' + str(~~random(1, 5)));
     entities.setEntityCycle('player', 1);
   }
 

@@ -58,6 +58,8 @@ function loadSprites(){
   assets.addSprite('animal_fur4', 'assets/wall_house0_vertical_horse.png');
   assets.addSprite('animal_fur5', 'assets/rat_bed.png');
   assets.addSprite('animal_fur6', 'assets/rat_obj.png');
+  assets.addSprite('animal_fur7', 'assets/tiger_obj.png');
+  assets.addSprite('animal_fur8', 'assets/dog_obg.png');
 
   // Player Tiles
   assets.addSprite('player_face_front', 'assets/scrooge_face_front0.png');
@@ -143,7 +145,7 @@ function loadHouses(){
     'wall_detailed6', 'wall_detailed7',
     'animal_fur0', 'animal_fur1', 'animal_fur2',
     'animal_fur3', 'animal_fur4', 'animal_fur5',
-    'animal_fur6'
+    'animal_fur6', 'animal_fur7', 'animal_fur8'
   ];
   houses.push(new House(7, tileset));
   houses[0].addRoom(3,3,[
@@ -352,7 +354,7 @@ function loadHouses(){
 [7, 2, 2, 2, 2, 2, 2, 19],
 [25, 2, 2, 2, 2, 2, 2, 24],
 [25, 2, 2, 2, 2, 2, 2, 8],
-[7, 23, 2, 2, 2, 2, 2, 24],
+[7, 23, 2, 2, 35, 2, 2, 24],
 [9, 10, 10, 10, 10, 10, 10, 11]
 ]);
   houses[0].addRoom(6,2,[
@@ -400,7 +402,7 @@ function loadHouses(){
 [25, 18, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 17, 14],
 [25, 1, 1, 1, 1, 1, 1, 1],
-[25, 1, 1, 1, 1, 1, 23, 13],
+[25, 36, 1, 1, 1, 1, 23, 13],
 [25, 1, 1, 1, 1, 1, 1, 8],
 [7, 1, 1, 1, 1, 1, 1, 19],
 [26, 10, 10, 10, 10, 10, 10, 11]
